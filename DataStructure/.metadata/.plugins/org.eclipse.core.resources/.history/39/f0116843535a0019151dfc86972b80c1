@@ -1,0 +1,39 @@
+package Easy;
+
+public class PrintNthFromLast {
+	void printNthFromLast(int n)
+	{
+		Node mainPtr = head;
+		Node refPtr = head;
+		
+		int count = 0;
+		
+		if (head != null)
+		{
+			while(count < n)
+			{
+				if (refPtr != null)
+				{
+					refPtr = refPtr.next;
+					count++;
+				}
+				else
+					return;
+			}
+		}
+		
+		while (refPtr != null)
+		{
+			mainPtr = mainPtr.next;
+			refPtr = refPtr.next;
+		}
+		
+		System.out.println(mainPtr.data);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

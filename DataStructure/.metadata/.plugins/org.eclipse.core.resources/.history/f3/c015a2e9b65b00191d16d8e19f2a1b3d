@@ -1,0 +1,32 @@
+//Example 1:
+//Input: [5,3,4,5]
+//Output: true
+//Explanation: 
+//Alex starts first, and can only take the first 5 or the last 5.
+//Say he takes the first 5, so that the row becomes [3, 4, 5].
+//If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
+//If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
+//This demonstrated that taking the first 5 was a winning move for Alex, so we return true.
+
+package Medium;
+import java.util.*;
+
+public class StoneGame {
+	public boolean stoneGame(int[] piles) 
+	{
+        int[] dp = Arrays.copyOf(piles, piles.length);;
+        for (int d = 1; d < piles.length; d++)
+        {
+            for (int i = 0; i < piles.length - d; i++)
+                dp[i] = Math.max(piles[i] - dp[i + 1], piles[i + d] - dp[i]);
+        }
+        return dp[0] > 0;
+    }
+	
+	public static void main(String[] args) {
+		StoneGame obj = new StoneGame();
+		System.out.println(obj.stoneGame({5 3 7 10}));
+
+	}
+
+}

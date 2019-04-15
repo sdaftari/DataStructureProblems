@@ -1,0 +1,58 @@
+Given N numbers in an array. Your task is to keep at-most K numbers at the top (According to their frequency).  We basically need to print top k numbers when input stream has included k distinct elements, 
+else need to print all distinct elements sorted by frequency.
+
+package Medium;
+import java.util.*;
+
+class Pair{
+    int num;
+    int count;
+    public Pair(int num, int count){
+        this.num=num;
+        this.count=count;
+    }
+}
+
+public class TopKFrequentNumbers {
+	
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        //count the frequency for each element
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int num: nums){
+            if(map.containsKey(num)){
+                map.put(num, map.get(num)+1);
+            }else{
+                map.put(num, 1);
+            }
+        }
+ 
+        // create a min heap
+        PriorityQueue<Pair> queue = new PriorityQueue<>(Comparator.comparing(Pair->Pair.count));
+ 
+        //maintain a heap of size k.
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()){
+            Pair p = new Pair(entry.getKey(), entry.getValue());
+            queue.offer(p);
+            if(queue.size()>k){
+                queue.poll();
+            }
+        }
+ 
+        //get all elements from the heap
+        List<Integer> result = new ArrayList<>();
+        while(queue.size()>0){
+            result.add(queue.poll().num);
+        }
+ 
+        //reverse the order
+        Collections.reverse(result);
+ 
+        return result;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

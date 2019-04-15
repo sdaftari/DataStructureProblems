@@ -1,0 +1,44 @@
+// if it is first increasing, then decreasing
+// Complexity O(n)
+
+package Easy;
+
+public class Bitonic {
+
+	public static void main(String[] args) {
+		//int arr[] = {12, 4, 78, 90, 45, 23};
+		int[] arr = {4, 8, 6};
+        int n = arr.length;
+        System.out.println("Max length Bitnoic Subarray is "
+                            + bitonic(arr, n));
+	}
+	
+	public static int bitonic(int[] arr, int size)
+	{
+		int[] inc = new int[size];
+		int[] dec = new int[size];
+		int max;
+		inc[0] = 1;
+		dec[size-1] = 1;
+		
+		// Create array to count number of increasing elements
+		for(int i = 1; i < size; i++)
+			inc[i] = arr[i-1] <= arr[i] ? inc[i-1] + 1 : 1;
+		
+		// Create array to count number of decreasing elements
+		for(int i = size-2; i >= 0; i--)
+			dec[i] = arr[i] >= arr[i+1] ? dec[i+1] + 1 : 1;
+			
+		// Bitonic sequence length is max of sum -1, as ith element is counted twice
+		// Find max of that
+		max = Math.max(inc[0], dec[0]) - 1;
+		
+		for(int i = 1; i < size; i++)
+		{
+			if(max < inc[i] + dec[i] - 1)
+				max = inc[i] + dec[i] - 1;
+		}
+		
+		return max;
+	}
+}

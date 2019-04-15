@@ -1,0 +1,45 @@
+package Medium;
+
+public class LongestContinuousSequence 
+{
+	static int res = 0; 
+	public int longestConsecutive(TreeNode root)
+    {
+        if (root == null) 
+            return 0; 
+      
+        //  call utility method with current length 0 
+        longestConsecutiveUtil(root, 0, root.val, res); 
+        return res; 
+    }
+    
+    void longestConsecutiveUtil(TreeNode root, int curLength, int expected, int res) 
+    { 
+        if (root == null) 
+            return; 
+      
+        // if root data has one more than its parent 
+        // then increase current length 
+        if (root.val == expected) 
+            curLength++; 
+        else
+            curLength = 1; 
+      
+        //  update the maximum by current length 
+        res = Math.max(res, curLength); 
+      
+        // recursively call left and right subtree with 
+        // expected value 1 more than root data 
+        longestConsecutiveUtil(root.left, curLength, root.val + 1, res); 
+        longestConsecutiveUtil(root.right, curLength, root.val + 1, res); 
+    }
+
+	public static void main(String[] args) {
+		LongestContinuousSequence obj = new LongestContinuousSequence();
+		TreeNode root = new TreeNode(1);
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(3);
+		System.out.println(obj.longestConsecutive(root));
+	}
+
+}

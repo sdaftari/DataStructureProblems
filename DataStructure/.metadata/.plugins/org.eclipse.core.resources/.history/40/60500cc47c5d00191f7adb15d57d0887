@@ -1,0 +1,52 @@
+package Easy;
+
+public class ExtractMaximum {
+	
+	// Method to extract the maximum value 
+    static String extractMaximum(String str) 
+    { 
+        int n = str.length(); 
+        String curr_num =""; 
+        String res=""; 
+       
+        // Start traversing the string 
+        for (int i = 0; i<n; i++) 
+        { 
+            // Ignore leading zeroes 
+            while (i<n && str.charAt(i)=='0') 
+                i++; 
+       
+            // Store numeric value into a string 
+            while (i<n && Character.isDigit(str.charAt(i))) 
+            { 
+                curr_num = curr_num + str.charAt(i); 
+                i++; 
+            } 
+       
+            if (i == n) 
+                break; 
+       
+            if (curr_num.length() > 0) 
+                i--; 
+       
+            // Update maximum string 
+            res = maximumNum(curr_num, res); 
+       
+            curr_num = ""; 
+        } 
+       
+        // To handle the case if there is only 
+        // 0 numeric value 
+        if (curr_num.length() == 0 && res.length() == 0) 
+            res = res + '0'; 
+       
+        // Return maximum string 
+        return maximumNum(curr_num, res); 
+    } 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,52 @@
+package Medium;
+import java.util.*;
+
+public class MaxFrequencyStack {
+	
+	HashMap<Integer, Integer> freq = new HashMap<>();
+    HashMap<Integer, Stack<Integer>> m = new HashMap<>();
+    int maxfreq = 0;
+    
+    public MaxFrequencyStack() {
+        
+    }
+    
+    public void push(int x) 
+    {
+    	// Get the count from freq map
+        int f = freq.getOrDefault(x, 0) + 1;
+        freq.put(x, f);
+        //Find the max frequency
+        maxfreq = Math.max(maxfreq, f);
+        
+        // Add the frequency as key and stack of numbers for that frequency
+        if (!m.containsKey(f)) 
+        	m.put(f, new Stack<Integer>());
+        m.get(f).add(x);
+    }
+    
+    public int pop() 
+    {
+        int x = m.get(maxfreq).pop();
+        freq.put(x, maxfreq - 1);
+        // If we have '5' 4 times in input, it will wil present in maxFreq 1, 2, 3, 4
+        if (m.get(maxfreq).size() == 0) 
+        	maxfreq--;
+        return x;
+    }
+
+	public static void main(String[] args) {
+		MaxFrequencyStack obj = new MaxFrequencyStack();
+		obj.push(5);
+		obj.push(7);
+		obj.push(7);
+		obj.push(5);		
+		obj.push(4);
+		obj.push(5);
+		obj.push(5);
+		System.out.println(obj.pop());
+		System.out.println(obj.pop());
+		System.out.println(obj.pop());
+	}
+
+}

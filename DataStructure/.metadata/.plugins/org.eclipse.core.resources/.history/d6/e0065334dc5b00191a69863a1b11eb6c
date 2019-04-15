@@ -1,0 +1,90 @@
+package Medium;
+
+class PolyNode
+{
+    int coeff;
+    int pow;
+    PolyNode next;
+    PolyNode(int a,int b)
+    {
+        coeff=a;
+        pow=b;
+        next=null;
+    }
+}
+
+public class PolynomialAddition 
+{
+	
+	
+	public static void addPolynomial(PolyNode p1,PolyNode p2)
+    {
+		PolyNode poly = null; PolyNode head = null;
+        int pow = 0, coef = 0;
+        while(p1.next != null && p2.next != null) 
+        { 
+            // If power of 1st polynomial is greater then 2nd, then store 1st as it is 
+            // and move its pointer 
+            if(p1.pow > p2.pow) 
+            { 
+                pow = p1.pow; 
+                coef = p1.coeff; 
+                p1 = p1.next; 
+            } 
+              
+            // If power of 2nd polynomial is greater then 1st, then store 2nd as it is 
+            // and move its pointer 
+            else if(p1.pow < p2.pow) 
+            { 
+                pow = p2.pow; 
+                coef = p2.coeff; 
+                p2 = p2.next; 
+            } 
+              
+            // If power of both polynomial numbers is same then add their coefficients 
+            else
+            { 
+                pow = p1.pow; 
+                coef = p1.coeff+p2.coeff; 
+                p1 = p1.next; 
+                p2 = p2.next; 
+            } 
+              
+            // Dynamically create new node 
+            poly = new PolyNode(pow, coef);
+            poly = poly.next;
+            if (head == null)
+                head = poly;
+        }
+        
+        while(p1.next != null || p2.next != null) 
+        { 
+            if(p1.next != null) 
+            { 
+                pow = p1.pow; 
+                coef = p1.coeff; 
+                p1 = p1.next; 
+            } 
+            if(p2.next != null) 
+            { 
+                pow = p2.pow; 
+                coef = p2.coeff; 
+                p2 = p2.next; 
+            } 
+            poly.next = new PolyNode(pow, coef); 
+            poly = poly.next; 
+        }
+        
+        while (head != null)
+        {
+            System.out.print(head.coeff + "X" + head.coeff);
+            head = head.next;
+        }
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,100 @@
+package Medium;
+
+public class DistanceBetweenTwoNodes {
+
+	// Distance between two nodes in BT
+	public static Node LCA(Node root, int n1, int n2)  
+    { 
+        if (root == null) 
+            return root; 
+        if (root.val == n1 || root.val == n2) 
+            return root; 
+  
+        // Find the LCA for two nodes
+        Node left = LCA(root.left, n1, n2); 
+        Node right = LCA(root.right, n1, n2); 
+        
+        // 
+        if (left != null && right != null) 
+            return root; 
+        if (left != null) 
+            return LCA(root.left, n1, n2); 
+        else
+            return LCA(root.right, n1, n2); 
+    } 
+	
+	// Returns level of key k if it is present in 
+    // tree, otherwise returns -1 
+    public static int findLevel(Node root, int a, int level) 
+    { 
+        if (root == null) 
+            return -1; 
+        if (root.val == a) 
+            return level; 
+        int left = findLevel(root.left, a, level + 1); 
+        if (left == -1) 
+            return findLevel(root.right, a, level + 1); 
+        return left; 
+    } 
+  
+    public static int findDistance(Node root, int a, int b) 
+    { 
+        Node lca = LCA(root, a, b); 
+  
+        // Then find the distance between LCA and node and add them
+        int d1 = findLevel(lca, a, 0); 
+        int d2 = findLevel(lca, b, 0); 
+  
+        return d1 + d2; 
+    } 
+    
+    // For BST, we can make it faster by choosing left or right child depending upon the values of nodes
+    public int findDistWrapper(Node root, int a, int b)  
+    {  
+        int temp = 0; 
+        if (a > b)  
+        { 
+        	temp = a; 
+        	a = b; 
+        	b = temp; 
+        }  
+        // Make sure a < b
+        return distanceBetween2(root, a, b);  
+    }  
+    
+	 // Returns minimum distance beween a and b.  
+	 // This function assumes that a and b exist  
+	 // in BST.  
+	 static int distanceBetween2(Node root, int a, int b)  
+	 {  
+	     if (root == null)  
+	         return 0;  
+	   
+	     // Both keys lie in left  
+	     if (root.val > a && root.val > b)  
+	         return distanceBetween2(root.left, a, b);  
+	   
+	     // Both keys lie in right  
+	     if (root.val < a && root.val < b) // same path  
+	         return distanceBetween2(root.right, a, b);  
+	   
+	     // Lie in opposite directions (Root is  
+	     // LCA of two nodes)  
+	     if (root.val >= a && root.val <= b)  
+	         return distanceFromRoot(root, a) + distanceFromRoot(root, b); 
+	           
+	     return 0; 
+	 }
+	 
+	// This function returns distance of x from  
+	// root. This function assumes that x exists  
+	// in BST and BST is not NULL.  
+	static int distanceFromRoot(Node root, int x)  
+	{  
+	    if (root.val == x)  
+	        return 0;  
+	    else if (root.val > x)  
+	        return 1 + distanceFromRoot(root.left, x);  
+	    return 1 + distanceFromRoot(root.right, x);  
+	} 
+}

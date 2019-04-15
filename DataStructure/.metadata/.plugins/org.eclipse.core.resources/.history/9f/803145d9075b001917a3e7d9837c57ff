@@ -1,0 +1,34 @@
+package Medium;
+
+public class SortedIntersection {
+	
+	ListNode sortedIntersect(ListNode a, ListNode b) 
+	{ 
+	  ListNode dummy; 
+	  ListNode tail = dummy; 
+	  dummy.next = null; 
+	   
+	  /* Once one or the other list runs out -- we're done */
+	  while (a != NULL && b != NULL) 
+	  { 
+	    if (a->data == b->data) 
+	    { 
+	       push((&tail->next), a->data); 
+	       tail = tail->next; 
+	       a = a->next; 
+	       b = b->next; 
+	    } 
+	    else if (a->data < b->data) /* advance the smaller list */      
+	       a = a->next; 
+	    else
+	       b = b->next; 
+	  } 
+	  return(dummy.next); 
+	} 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,41 @@
+// O(logn) if the input is balanced BST. Worst case is O(n) if it is not balanced.
+package Medium;
+
+public class SplitBST {
+
+	public class TreeNode 
+	{
+	     int val;
+	     TreeNode left;
+	     TreeNode right;
+	     TreeNode(int x) { val = x; }
+	 }
+	
+	// Splitted return [smaller/equal, greater] subtrees
+	public TreeNode[] splitBST(TreeNode root, int V) {
+        if(root==null) 
+        	return new TreeNode[]{null, null};
+        
+        TreeNode[] splitted;
+        if(root.val<= V) 
+        {
+            splitted = splitBST(root.right, V);
+            root.right = splitted[0];
+            splitted[0] = root;
+        } 
+        else 
+        {
+            splitted = splitBST(root.left, V);
+            root.left = splitted[1];
+            splitted[1] = root;
+        }
+        
+        return splitted;
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

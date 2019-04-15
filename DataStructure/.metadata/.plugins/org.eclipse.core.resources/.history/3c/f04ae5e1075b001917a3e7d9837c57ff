@@ -1,0 +1,51 @@
+package Medium;
+
+public class SortedIntersection {
+	
+	ListNode sortedIntersect(ListNode a, ListNode b) 
+	{ 
+	  ListNode dummy; 
+	  ListNode tail = dummy; 
+	  dummy.next = null; 
+	   
+	  /* Once one or the other list runs out -- we're done */
+	  while (a != NULL && b != NULL) 
+	  { 
+	    if (a.data == b->data) 
+	    { 
+	       push((&tail->next), a->data); 
+	       tail = tail->next; 
+	       a = a->next; 
+	       b = b->next; 
+	    } 
+	    else if (a->data < b->data) /* advance the smaller list */      
+	       a = a->next; 
+	    else
+	       b = b->next; 
+	  } 
+	  return(dummy.next); 
+	} 
+	
+	// Non sorted
+	void getIntersection(Node head1, Node head2) 
+    { 
+        Node result = null; 
+        Node t1 = head1; 
+  
+        // Traverse list1 and search each element of it in list2. 
+        // If the element is present in list 2, then insert the 
+        // element to result 
+        while (t1 != null) 
+        { 
+            if (isPresent(head2, t1.data)) 
+                push(t1.data); 
+            t1 = t1.next; 
+        } 
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

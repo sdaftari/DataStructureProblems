@@ -1,0 +1,35 @@
+package Medium;
+
+public class MultiplyTwoLists {
+	
+	public long multiplyTwoLists(Node first, Node second)
+	   {
+	        long num1 = 0, num2 = 0; 
+	        long N= 1000000007;
+	      
+	        // Generate numbers from linked lists 
+	        while (first != null || second != null) 
+	        { 
+	            if (first != null) 
+	            { 
+	                num1 = ((num1%N)*10)%N + first.data; 
+	                first = first.next; 
+	            } 
+	            if (second != null) 
+	            { 
+	                num2 = ((num2%N)*10)%N + second.data; 
+	                second = second.next; 
+	            } 
+	        } 
+	      
+	        // Return multiplication of  
+	        // two numbers 
+	        return ((num1%N)*(num2%N))%N;
+	   }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

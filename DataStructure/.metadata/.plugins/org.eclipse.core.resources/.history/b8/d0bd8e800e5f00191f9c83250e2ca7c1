@@ -1,0 +1,29 @@
+package Easy;
+
+public class ReverseSubArray {
+	
+	/ Reverse subarray a[0..k-1] 
+		    static void reverse(int []a, int n, int k) 
+		    { 
+		        if (k > n) 
+		        { 
+		            System.out.println( "Invalid k"); 
+		            return; 
+		        } 
+		      
+		        // One by one reverse first  
+		        // and last elements of a[0..k-1] 
+		        for (int i = 0; i < k / 2; i++) 
+		        { 
+		            int tempswap = a[i];  
+		                a[i] = a[k - i - 1];  
+		                a[k - i - 1] = tempswap;              
+		        }  
+		    } 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

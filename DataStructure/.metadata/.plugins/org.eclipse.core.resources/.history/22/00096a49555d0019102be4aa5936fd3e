@@ -1,0 +1,11 @@
+package Medium;
+import java.util.*;
+
+public class HuffmanNode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

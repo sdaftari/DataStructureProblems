@@ -1,0 +1,25 @@
+package Medium;
+
+public class PermutationsWithSpace {
+	// Function creates buf[] to store individual output string and uses 
+    // printPatternUtil() to print all permutations 
+    static void printPattern(String str) 
+    { 
+        int len = str.length(); 
+  
+        // Buffer to hold the string containing spaces 
+        // 2n-1 characters and 1 string terminator 
+        char[] buf = new char[2*len]; 
+  
+        // Copy the first character as it is, since it will be always 
+        // at first position 
+        buf[0] = str.charAt(0); 
+        printPatternUtil(str, buf, 1, 1, len); 
+    } 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

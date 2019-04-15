@@ -1,0 +1,81 @@
+package Medium;
+import java.util.*;
+
+import Medium.ConvertBSTToSortedDLL.Node;
+
+public class ConvertLinkedListToBinaryTree {
+	
+	class Node {
+	    public int val;
+	    public Node left;
+	    public Node right;
+
+	    public Node() {}
+
+	    public Node(int _val,Node _left,Node _right) {
+	        val = _val;
+	        left = _left;
+	        right = _right;
+	    }
+	};
+	
+	public static TreeNode convert(Node head,TreeNode node)
+	{
+	    // queue to store the parent nodes 
+        Queue<TreeNode> q = new LinkedList<TreeNode>(); 
+   
+        // Base Case 
+        if (head == null)  
+        { 
+            node = null;  
+            return null; 
+        } 
+        
+        // 1.) The first node is always the root node, and 
+        //     add it to the queue 
+        node = new TreeNode(head.val); 
+        q.add(node); 
+   
+        // advance the pointer to the next node 
+        head = head.right; 
+   
+        // until the end of linked list is reached, do the 
+        // following steps 
+        while (head != null)  
+        { 
+            // 2.a) take the parent node from the q and  
+            //      remove it from q 
+        	TreeNode parent = q.peek(); 
+        	TreeNode pp = q.poll(); 
+               
+            // 2.c) take next two nodes from the linked list. 
+            // We will add them as children of the current  
+            // parent node in step 2.b. Push them into the 
+            // queue so that they will be parents to the  
+            // future nodes 
+        	TreeNode leftChild = null, rightChild = null; 
+            leftChild = new TreeNode(head.val); 
+            q.add(leftChild); 
+            head = head.TreeNode; 
+            if (head != null)  
+            { 
+                rightChild = new TreeNode(head.val); 
+                q.add(rightChild); 
+                head = head.next; 
+            } 
+   
+            // 2.b) assign the left and right children of 
+            //      parent 
+            parent.left = leftChild; 
+            parent.right = rightChild; 
+        } 
+           
+        return node; 
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,64 @@
+//Given an array A (distinct elements) of size N. Rearrange the elements of array in zig-zag fashion. The converted array should be in form a < b > c < d > e < f. 
+//The relative order of elements is same in the output i.e you have to iterate on the original array only.
+//Example:
+//Input:
+//2
+//7
+//4 3 7 8 6 2 1
+//4
+//1 4 3 2
+//Output:
+//3 7 4 8 2 6 1
+//1 4 2 3
+
+package Medium;
+
+public class PrintInZigZagOrder {
+	
+	// Method for zig-zag conversion of array 
+    static void zigZag(int[] arr) 
+    { 
+        // Flag true indicates relation "<" is expected, 
+        // else ">" is expected.  The first expected relation 
+        // is "<" 
+        boolean flag = true; 
+          
+        int temp =0; 
+       
+        for (int i=0; i<=arr.length-2; i++) 
+        { 
+            if (flag)  /* "<" relation expected */
+            { 
+                /* If we have a situation like A > B > C, 
+                   we get A > B < C by swapping B and C */
+                if (arr[i] > arr[i+1]) 
+                { 
+                    // swap 
+                    temp  = arr[i]; 
+                    arr[i] = arr[i+1]; 
+                    arr[i+1] = temp; 
+                } 
+                  
+            } 
+            else /* ">" relation expected */
+            { 
+                /* If we have a situation like A < B < C, 
+                   we get A < C > B by swapping B and C */
+                if (arr[i] < arr[i+1]) 
+                { 
+                    // swap 
+                    temp = arr[i]; 
+                    arr[i] = arr[i+1]; 
+                    arr[i+1] = temp; 
+                } 
+            } 
+            flag = !flag; /* flip flag */
+        } 
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

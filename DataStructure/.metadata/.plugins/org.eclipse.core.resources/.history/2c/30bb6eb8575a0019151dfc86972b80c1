@@ -1,0 +1,149 @@
+
+/*
+ * Naive soln is consider two list and merge them
+ * Merging two list 2n, third- 2n+n..k nodes kn. So total is 2n + 3n + 4n.. + kn = k^2n
+ * 
+ * Better Sol: Megre Sort
+ * A better solution is to use the idea of merge sort, i.e, we divide the k linked list into k/2, then k/4, until there is only one or two linked list. 
+ * So the time complexity would be O(klogk * n). \
+ * 
+ * Another solution: Priority Queue
+ * Insertion time: O(log k), Poll: )(1)
+ * Since total elements = k, complexity: )(k*log k * n)// for n lists
+ * 
+ * Complexities are same, but in this method space complexity: )(k)
+ */
+import java.util.*;
+
+public class MergeKLists {
+
+	public static void main(String[] args) {
+		ListNode l1 = new ListNode(1);
+		l1.next = new ListNode(3);
+		l1.next.next = new ListNode(5);
+		l1.next.next.next = new ListNode(7);
+		
+		ListNode l2 = new ListNode(2);
+		l2.next = new ListNode(4);
+		l2.next.next = new ListNode(6);
+		l2.next.next.next = new ListNode(8);
+		
+		ListNode l3 = new ListNode(0);
+		l3.next = new ListNode(9);
+		l3.next.next = new ListNode(10);
+		l3.next.next.next = new ListNode(11);
+		
+		/*ListNode[] lists = {l1, l2, l3};
+		
+		//MergeKLists obj = new MergeKLists();
+		ListNode ans = mergeKLists(lists);
+		
+		while(ans != null)
+		{
+			System.out.print(ans.val);
+			ans = ans.next;
+		}*/
+		
+		ArrayList lists1 = new ArrayList<ListNode>();
+		lists1.add(l1);
+		lists1.add(l2);
+		lists1.add(l3);
+		
+		ListNode ans = mergeKListsMergeSort(lists1);
+		
+		while(ans != null)
+		{
+			System.out.print(ans.val + " ");
+			ans = ans.next;
+		}
+	}
+	
+	public static ListNode mergeKListsMergeSort(ArrayList<ListNode> lists) {
+        if (lists == null || lists.size() == 0) 
+        	return null;
+        if (lists.size() == 1) 
+        	return lists.get(0);
+        int numLists = lists.size();
+         
+        return merge(lists, 0, numLists - 1);
+    }
+	
+	private static ListNode merge(ArrayList<ListNode> lists, int lo, int hi) {
+        if (lo == hi) return lists.get(lo);
+         
+        int mid = (lo + hi) / 2;
+        ListNode l1 = merge(lists, lo, mid);
+        ListNode l2 = merge(lists, mid + 1, hi);
+         
+        return mergeTwoLists(l1, l2);
+    }
+     
+    private static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+         
+        ListNode head = new ListNode(0);
+        ListNode p = head;
+         
+        while (p1 != null && p2 != null) 
+        {
+            if (p1.val <= p2.val) 
+            {
+                p.next = p1;
+                p1 = p1.next;
+            } 
+            else 
+            {
+                p.next = p2;
+                p2 = p2.next;
+            }
+            p = p.next;
+        }
+        if (p1 != null) 
+        	p.next = p1;
+        else if (p2 != null) 
+        	p.next = p2;
+         
+        return head.next;
+    }
+	
+	// Using Heap (Priority Queue)
+	public static ListNode mergeKLists(ListNode[] lists) {
+	    if(lists==null||lists.length==0)
+	        return null;
+	 
+	    PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(new Comparator<ListNode>(){
+	        public int compare(ListNode l1, ListNode l2){
+	            return l1.val - l2.val;
+	        }
+	    });
+	 
+	    ListNode head = new ListNode(0);
+	    ListNode p = head;
+	 
+	    // Offer first node of each list
+	    for(ListNode firstNode: lists){
+	        if(firstNode!=null)
+	            queue.offer(firstNode);
+	    }    
+	 
+	    // Poll smallest node from queue and insert next node of that
+	    while(!queue.isEmpty()){
+	        ListNode n = queue.poll();
+	        p.next = n;
+	        p=p.next;
+	 
+	        if(n.next!=null)
+	            queue.offer(n.next);
+	    }    
+	 
+	    return head.next;	 
+	}
+}
+
+
+/*class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}*/

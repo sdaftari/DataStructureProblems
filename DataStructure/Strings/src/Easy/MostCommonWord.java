@@ -15,9 +15,11 @@ import java.util.*;
 
 public class MostCommonWord {
 
-	public String mostCommonWord(String paragraph, String[] banned) {
+	public String mostCommonWord(String paragraph, String[] banned) 
+	{
         Set<String> ban = new HashSet<>(Arrays.asList(banned));
         Map<String, Integer> map = new HashMap<>();
+        // Replace non character words with space, except a-z, A-Z,0-9
         String[] words = paragraph.replaceAll("\\W", " ").toLowerCase().split("\\s+");
         for (String s : words)
         {

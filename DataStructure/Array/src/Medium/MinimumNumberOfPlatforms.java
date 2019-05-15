@@ -20,24 +20,19 @@ import java.util.*;
 
 public class MinimumNumberOfPlatforms {
 
-	// Returns minimum number of platforms reqquired 
+	// Returns minimum number of platforms required 
 	static int findPlatform(int arr[], int dep[], int n) 
 	{ 
-	   // Sort arrival and departure arrays 
 	   Arrays.sort(arr); 
 	   Arrays.sort(dep); 
 	   
-	   // plat_needed indicates number of platforms 
-	   // needed at a time 
+	   // plat_needed indicates number of platforms needed at a time 
 	   int plat_needed = 1, result = 1; 
 	   int i = 1, j = 0; 
 	   
-	   // Similar to merge in merge sort to process  
-	   // all events in sorted order 
 	   while (i < n && j < n) 
 	   { 
-	      // If next event in sorted order is arrival,  
-	      // increment count of platforms needed 
+	      // If next event in sorted order is arrival, increment count of platforms needed 
 	      if (arr[i] <= dep[j]) 
 	      { 
 	          plat_needed++; 
@@ -59,9 +54,42 @@ public class MinimumNumberOfPlatforms {
 	   return result; 
 	} 
 	
+	
+	public class Interval
+	{
+		int start;
+	    int end;
+	    Interval() { start = 0; end = 0; }
+	    Interval(int s, int e) { start = s; end = e; }
+	}
+	
+	public int minMeetingRooms(Interval[] intervals) {
+		int[] starts = new int[intervals.length];
+        int[] ends = new int[intervals.length];
+        for(int i = 0; i < intervals.length; i++) 
+        {
+            starts[i] = intervals[i].start;
+            ends[i] = intervals[i].end;
+        }
+        
+        Arrays.sort(starts);
+        Arrays.sort(ends);
+        int rooms = 0;
+        int endsItr = 0;
+        for(int i = 0; i < starts.length; i++) 
+        {
+            if(starts[i] < ends[endsItr])
+                rooms++;
+            else
+                endsItr++;
+        }
+        return rooms;
+    }
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] arr = {900,  940, 950,  1100, 1500, 1800};
+		int[] dep = {910, 1200, 1120, 1130, 1900, 2000};
+		System.out.println(findPlatform(arr, dep, 6));
 	}
 
 }

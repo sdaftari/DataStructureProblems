@@ -15,7 +15,8 @@ public class PeakIndexInMountainArray {
 
 	public int peakIndexInMountainArray(int[] A) {
         int l = 0, r = A.length - 1, mid;
-        while (l < r) {
+        while (l < r) 
+        {
             mid = (l + r) / 2;
             if (A[mid] < A[mid + 1]) 
                 l = mid;

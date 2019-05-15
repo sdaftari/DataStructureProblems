@@ -23,6 +23,7 @@ public class TopViewOfBT {
 	    	TreeNode node = q.poll();
 	    	int col = cols.poll();
 	    	
+	    	// Add value for  first col key only for toop view
 	    	if (!map.containsKey(col)) 
 	            map.put(col, node);
 	        

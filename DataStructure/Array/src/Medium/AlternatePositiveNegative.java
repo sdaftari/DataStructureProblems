@@ -35,7 +35,7 @@ public class AlternatePositiveNegative {
             } 
         } 
   
-        // Now all positive numbers are at end and negative numbers at 
+        // Now all positive numbers are at end and negativexnumbers at 
         // the beginning of array. Initialize indexes for starting point 
         // of positive and negative numbers to be swapped 
         int pos = i+1, neg = 0; 

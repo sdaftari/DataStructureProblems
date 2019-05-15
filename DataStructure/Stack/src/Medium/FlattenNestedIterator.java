@@ -25,7 +25,7 @@ public class FlattenNestedIterator {
 
 //	            stack.pop();
 //	            
-				// If ppopped element is a list, iterate over the list
+				// If popped element is a list, iterate over the list
 //	            // Push the individual numbers on to the stack
 //	            for(int i = curr.getList().size() - 1; i >= 0; i--) 
 //	                stack.push(curr.getList().get(i));

@@ -22,7 +22,7 @@ package Easy;
 public class BettingGame {
 
 	static Integer finalAmt; 
-	Integer initaialAmt; 
+	Integer BettingGame; 
 	Integer betAmt; 
 	String betResultSequence; 
 
@@ -48,7 +48,8 @@ public class BettingGame {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BettingGame obj = new BettingGame();
+		System.out.println(obj.calculatFinalAmount1(4, "WLWLLLWWLW"));
 
 	}
 

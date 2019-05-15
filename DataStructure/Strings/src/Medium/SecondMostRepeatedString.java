@@ -14,56 +14,45 @@
 package Medium;
 import java.util.*;
 
-public class SecondMostRepeatedString {
-	// Method to find the word 
-    static String secMostRepeated(Vector<String> seq) 
-    { 
-        // Store all the words with its occurrence 
-        HashMap<String, Integer> occ = new HashMap<String,Integer>(seq.size()){ 
-            @Override
-            public Integer get(Object key) { 
-                 return containsKey(key) ? super.get(key) : 0; 
-            } 
-        }; 
-         
-        for (int i = 0; i < seq.size(); i++) 
-            occ.put(seq.get(i), occ.get(seq.get(i))+1); 
-       
-        // find the second largest occurrence 
-       int first_max = Integer.MIN_VALUE, sec_max = Integer.MIN_VALUE; 
-          
-       Iterator<Map.Entry<String, Integer>> itr = occ.entrySet().iterator(); 
-       while (itr.hasNext())  
-       { 
-           Map.Entry<String, Integer> entry = itr.next(); 
-           int v = entry.getValue(); 
-           if( v > first_max) { 
-                sec_max = first_max; 
-                first_max = v; 
-            } 
-       
-            else if (v > sec_max &&  
-                     v != first_max) 
-                sec_max = v; 
-       } 
-         
-       // Return string with occurrence equals 
-        // to sec_max 
-       itr = occ.entrySet().iterator(); 
-       while (itr.hasNext())  
-       { 
-           Map.Entry<String, Integer> entry = itr.next(); 
-           int v = entry.getValue(); 
-           if (v == sec_max) 
-                return entry.getKey(); 
-       } 
-         
-       return null; 
-    } 
+public class SecondMostRepeatedString {	
+	static String secMostRepeated(List<String> seq)
+	{
+		Map<String, Integer> map = new HashMap<>();
+		for (int i = 0; i < seq.size(); i++)
+		{
+			if (!map.containsKey(seq.get(i)))
+				map.put(seq.get(i), 0);
+			map.put(seq.get(i), map.get(seq.get(i))+1);
+		}
+			
+		int maxFirst = Integer.MIN_VALUE;
+		int maxSec = Integer.MIN_VALUE;
+		String firstKey = "";
+		String secKey = "";
+		for(Map.Entry<String, Integer> entry : map.entrySet())
+		{
+			if (entry.getValue() > maxFirst)
+			{			
+				secKey = firstKey;
+				maxSec = maxFirst;
+				firstKey = entry.getKey();
+				maxFirst = entry.getValue();	
+				
+			}
+			else if (entry.getValue() > maxSec)
+			{
+				secKey = entry.getKey();
+				maxSec = entry.getValue();
+			}
+		}
+			
+		return secKey;
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String arr[] = { "geeks", "for", "geeks", "for", "geeks", "aaa" }; 
+		List<String> seq =  Arrays.asList(arr);
+		System.out.println(secMostRepeated(seq)); 
 	}
 
 }

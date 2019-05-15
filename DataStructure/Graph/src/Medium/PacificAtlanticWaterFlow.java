@@ -78,11 +78,14 @@ public class PacificAtlanticWaterFlow {
         while(!queue.isEmpty())
         {
             int[] cur = queue.poll();
-            for(int[] d:dir)
+            for(int[] d : dir)
             {
-                int x = cur[0]+d[0];
-                int y = cur[1]+d[1];
-                if(x<0 || x>=n || y<0 || y>=m || visited[x][y] || matrix[x][y] < matrix[cur[0]][cur[1]])
+                int x = cur[0] + d[0];
+                int y = cur[1] + d[1];
+                // Since we need to find the points from which water will flow to both atlantic and pacific, 
+                // these points should be taller than the neighbors
+                // So if the new points are smaller, continue
+                if(x < 0 || x >= n || y < 0 || y >= m || visited[x][y] || matrix[x][y] < matrix[cur[0]][cur[1]])
                     continue;
                 visited[x][y] = true;
                 queue.offer(new int[]{x, y});

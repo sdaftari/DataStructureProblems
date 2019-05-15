@@ -26,17 +26,17 @@ public class FindDuplicateFiles {
                 String content = strs[i].substring(idx);
                 // Get the path before '('
                 String filename = strs[0] + "/" + strs[i].substring(0, idx);
-                // Get or Add the contents as key and all filepaths as values
+                // Get or Add the contents as key and all file paths as values
                 Set<String> filenames = map.getOrDefault(content, new HashSet<String>());
                 filenames.add(filename);
                 map.put(content, filenames);
             }
         }
         
-        for (String key : map.keySet()) {
-            if (map.get(key).size() > 1) {
+        for (String key : map.keySet()) 
+        {
+            if (map.get(key).size() > 1) 
                 result.add(new ArrayList<String>(map.get(key)));
-            }
         }
         
         return result;

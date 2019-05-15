@@ -1,18 +1,14 @@
 //Input:  arr[] = {10, 20, 30, 50, 10, 70, 30}
 //Output:         70, 30, 20, 10, 10, 10, 10
 //
-//First element in output indicates maximum of minimums of all 
-//windows of size 1.
+//First element in output indicates maximum of minimums of all windows of size 1.
 //Minimums of windows of size 1 are {10}, {20}, {30}, {50}, {10},
 //{70} and {30}.  Maximum of these minimums is 70
 //
-//Second element in output indicates maximum of minimums of all 
-//windows of size 2.
-//Minimums of windows of size 2 are {10}, {20}, {30}, {10}, {10},
-//and {30}.  Maximum of these minimums is 30
+//Second element in output indicates maximum of minimums of all windows of size 2.
+//Minimums of windows of size 2 are {10}, {20}, {30}, {10}, {10}, and {30}.  Maximum of these minimums is 30
 //
-//Third element in output indicates maximum of minimums of all 
-//windows of size 3.
+//Third element in output indicates maximum of minimums of all windows of size 3.
 //Minimums of windows of size 3 are {10}, {20}, {10}, {10} and {10}. 
 //Maximum of these minimums is 20
 //
@@ -35,15 +31,13 @@ public class MaximumOfMinWindow {
         int right[]  = new int[n+1];  
        
         // Initialize elements of left[] and right[] 
-        for (int i=0; i<n; i++) 
+        for (int i = 0; i < n; i++) 
         { 
             left[i] = -1; 
             right[i] = n; 
         } 
        
-        // Fill elements of left[] using logic discussed on 
-        // https://www.geeksforgeeks.org/next-greater-element/ 
-        for (int i=0; i<n; i++) 
+        for (int i = 0; i < n; i++) 
         { 
             while (!s.empty() && arr[s.peek()] >= arr[i]) 
                 s.pop(); 
@@ -72,7 +66,7 @@ public class MaximumOfMinWindow {
        
         // Create and initialize answer array 
         int ans[] = new int[n+1]; 
-        for (int i=0; i<=n; i++) 
+        for (int i = 0; i <= n; i++) 
             ans[i] = 0; 
        
         // Fill answer array by comparing minimums of all 
@@ -82,15 +76,13 @@ public class MaximumOfMinWindow {
             // length of the interval 
             int len = right[i] - left[i] - 1; 
        
-            // arr[i] is a possible answer for this length  
-            // 'len' interval, check if arr[i] is more than 
-            // max for 'len' 
+            // arr[i] is a possible answer for this length 'len' interval, max for 'len' 
             ans[len] = Math.max(ans[len], arr[i]); 
         } 
        
         // Some entries in ans[] may not be filled yet. Fill  
-        // them by taking values from right side of ans[] 
-        for (int i=n-1; i>=1; i--) 
+        // check if arr[i] is more than them by taking values from right side of ans[] 
+        for (int i = n-1; i >= 1; i--) 
             ans[i] = Math.max(ans[i], ans[i+1]); 
        
         // Print the result 
@@ -99,7 +91,7 @@ public class MaximumOfMinWindow {
     } 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		printMaxOfMin(7);
 
 	}
 

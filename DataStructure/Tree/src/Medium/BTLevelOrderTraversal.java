@@ -51,7 +51,8 @@ public class BTLevelOrderTraversal {
     {
         Queue<Node> q = new LinkedList<Node>();
 		Stack<Node> s = new Stack<Node>();
-		q.add(root);// add the root node to the queue
+		q.add(root);
+		// add the root node to the queue
 		while (!q.isEmpty()) 
 		{
 			// add the children to the queue
@@ -71,6 +72,28 @@ public class BTLevelOrderTraversal {
 			System.out.print(s.pop().val + " ");
 		}
     }
+	
+	// Level order bottom up
+	public List<List<Integer>> levelOrderBottom(TreeNode root) 
+	{
+	    List<List<Integer>> result = new ArrayList<List<Integer>>();
+	    if(root==null) return result;
+	    Queue<TreeNode> q = new LinkedList<>();
+	    q.add(root);
+	    while(q.size()>0){
+	        List<Integer> list = new ArrayList<>();
+	        int size = q.size();
+	        for(int i=0; i<size; i++){
+	            TreeNode node = q.poll();
+	            list.add(node.val);
+	            if(node.left!=null) q.add(node.left);
+	            if(node.right!=null) q.add(node.right);
+	        }
+	        result.add(0,list);
+	    }
+	    return result;
+
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

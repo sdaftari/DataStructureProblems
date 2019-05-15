@@ -1,0 +1,162 @@
+//Implement a basic calculator to evaluate a simple expression string.
+//The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
+//Example:
+//Input: "(1+(4+5+2)-3)+(6+8)"
+//Output: 23
+
+package Hard;
+import java.util.*;
+
+public class BasicCalculator {
+	
+	public int basicCalculatorI(String s) {
+	    Stack<Integer> stack = new Stack<Integer>();
+	    int result = 0;
+	    int number = 0;
+	    int sign = 1;
+	    for(int i = 0; i < s.length(); i++)
+	    {
+	        char c = s.charAt(i);
+	        // it should be one digit from the current number
+	        if(Character.isDigit(c))
+	            number = 10 * number + (int)(c - '0');
+	        // add the previous number and start a new number
+	        else if(c == '+')
+	        {
+	            result += sign * number;
+	            number = 0;
+	            sign = 1;
+	        }
+	        else if(c == '-')
+	        {
+	            result += sign * number;
+	            number = 0;
+	            sign = -1;
+	        }
+	        //push the previous result and the sign into the stack, set result to 0, just calculate the new result within the parenthesis.
+	        else if(c == '(')
+	        {
+	            //we push the result first, then sign;
+	            stack.push(result);
+	            stack.push(sign);
+	            //reset the sign and result for the value in the parenthesis
+	            sign = 1;   
+	            result = 0;
+	        }
+	        // pop out the top two numbers from stack, first one is the sign before this pair of parenthesis, second is the temporary result before this pair of parenthesis. We add them together.
+	        else if(c == ')')
+	        {
+	            result += sign * number;  
+	            number = 0;
+	            result *= stack.pop();    //stack.pop() is the sign before the parenthesis
+	            result += stack.pop();   //stack.pop() now is the result calculated before the parenthesis	            
+	        }
+	    }
+	    if(number != 0) 
+	    	result += sign * number;
+	    return result;
+	}
+	
+	//	The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . The integer division should truncate toward zero.
+	//	Example 1:
+	//	Input: "3+2*2"
+	//	Output: 7
+	public int basicCalculatorII(String s) 
+	{
+        int len;
+        if(s == null || (len = s.length())==0) 
+        	return 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        int num = 0;
+        char sign = '+';
+        for(int i = 0; i < len; i++)
+        {
+            if(Character.isDigit(s.charAt(i)))
+                num = num*10 + s.charAt(i)-'0';
+            
+            if((!Character.isDigit(s.charAt(i)) &&' '!=s.charAt(i)) != ' ' || i==len-1)
+            {
+                if(sign=='-')
+                    stack.push(-num);
+                if(sign=='+')
+                    stack.push(num);
+                if(sign=='*')
+                    stack.push(stack.pop()*num);
+                if(sign=='/')
+                    stack.push(stack.pop()/num);
+                
+                sign = s.charAt(i);
+                num = 0;
+            }
+        }
+
+        int re = 0;
+        for(int i:stack)
+            re += i;
+        
+        return re;
+    }
+	
+	
+//	o1 == 1 means +; o1 == -1 means - ;
+//	o2 == 1 means *; o2 == -1 means /.
+//	By default we have l1 = 0, o1 = 1, and l2 = 1, o2 = 1.
+	public int basicCalculatorIII(String s) {
+        int l1 = 0, o1 = 1;
+        int l2 = 1, o2 = 1;
+
+        for (int i = 0; i < s.length(); i++) 
+        {
+            char c = s.charAt(i);
+
+            if (Character.isDigit(c)) 
+            {
+                int num = c - '0';
+
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) 
+                    num = num * 10 + (s.charAt(++i) - '0');
+
+                l2 = (o2 == 1 ? l2 * num : l2 / num);
+
+            } 
+            // If the ( is encountered, take the substring inside () and recursively run the function again
+            else if (c == '(') 
+            {
+                int j = i;
+
+                for (int cnt = 0; i < s.length(); i++) 
+                {
+                    if (s.charAt(i) == '(') 
+                        cnt++;
+                    if (s.charAt(i) == ')') 
+                        cnt--;
+                    if (cnt == 0) 
+                        break;
+                }
+
+                int num = basicCalculatorIII(s.substring(j + 1, i));
+
+                l2 = (o2 == 1 ? l2 * num : l2 / num);
+
+            } 
+            else if (c == '*' || c == '/') 
+                o2 = (c == '*' ? 1 : -1);
+            else if (c == '+' || c == '-') 
+            {
+                l1 = l1 + o1 * l2;
+                o1 = (c == '+' ? 1 : -1);
+
+                l2 = 1; o2 = 1;
+            }
+        }
+
+        return (l1 + o1 * l2);
+    }
+
+	public static void main(String[] args) {
+		String s = "(2+6* 3+5- (3*14/7+2)*5)+3";
+		BasicCalculator obj = new BasicCalculator();
+		System.out.println(obj.basicCalculatorIII(s));
+	}
+
+}

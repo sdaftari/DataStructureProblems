@@ -51,7 +51,8 @@ public class BoxStacking {
         }
         
         int max = Integer.MIN_VALUE;
-        for(int i=0; i < T.length; i++){
+        for(int i=0; i < T.length; i++)
+        {
             if(T[i] > max){
                 max = T[i];
             }
@@ -65,12 +66,9 @@ public class BoxStacking {
         int index = 0;
         for (int i = 0; i < input.length; i++) 
         {
-            allRotationInput[index++] = Dimension.createDimension(
-                    input[i].height, input[i].length, input[i].width);
-            allRotationInput[index++] = Dimension.createDimension(
-                    input[i].length, input[i].height, input[i].width);
-            allRotationInput[index++] = Dimension.createDimension(
-                    input[i].width, input[i].length, input[i].height);
+            allRotationInput[index++] = Dimension.createDimension(input[i].height, input[i].length, input[i].width);
+            allRotationInput[index++] = Dimension.createDimension(input[i].length, input[i].height, input[i].width);
+            allRotationInput[index++] = Dimension.createDimension(input[i].width, input[i].length, input[i].height);
 
         }
     }
@@ -91,7 +89,8 @@ class Dimension implements Comparable<Dimension>
 
     Dimension() {}
 
-    static Dimension createDimension(int height, int side1, int side2) {
+    static Dimension createDimension(int height, int side1, int side2) 
+    {
         Dimension d = new Dimension();
         d.height = height;
         // while creating new dimension take larger side as length
@@ -105,7 +104,8 @@ class Dimension implements Comparable<Dimension>
         return d;
     }
     
-    public int compareTo(Dimension d) {
+    public int compareTo(Dimension d) 
+    {
         if (this.length * this.width >= d.length * d.width) {
             return -1;
         } else {
@@ -114,7 +114,6 @@ class Dimension implements Comparable<Dimension>
     }
 
     public String toString() {
-        return "Dimension [height=" + height + ", length=" + length
-                + ", width=" + width + "]";
+        return "Dimension [height=" + height + ", length=" + length + ", width=" + width + "]";
     }
 }

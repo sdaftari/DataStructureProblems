@@ -23,21 +23,14 @@ public class MaxSumInConfiguration {
 	// Returns maximum value of i*arr[i] 
 	static int maxSum(int arr[], int n) 
 	{ 
-		// Initialize result 
 		int res = Integer.MIN_VALUE; 
 		  
-		// Consider rotation beginning with i 
-		// for all possible values of i. 
+		// Consider rotation beginning with i for all possible values of i. 
 		for (int i = 0; i < n; i++) 
 		{ 
-		  
-		    // Initialize sum of current rotation 
 		    int curr_sum = 0; 
 		  
-		    // Compute sum of all values. We don't 
-		    // acutally rotation the array, but compute 
-		    // sum by finding ndexes when arr[i] is 
-		    // first element 
+		    // We don't actually rotate the array, but compute sum by finding indexes when arr[i] is first element 
 		    for (int j = 0; j < n; j++) 
 		    { 
 		        int index = (i + j) % n; 

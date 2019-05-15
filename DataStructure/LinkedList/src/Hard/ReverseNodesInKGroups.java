@@ -10,12 +10,12 @@ public class ReverseNodesInKGroups {
 	public ListNode reverseKGroup(ListNode head, int k) 
 	{
         ListNode begin;
-        if (head==null || head.next ==null || k==1)
+        if (head == null || head.next ==null || k==1)
             return head;
         ListNode dummyhead = new ListNode(-1);
         dummyhead.next = head;
         begin = dummyhead;
-        int i=0;
+        int i = 0;
         while (head != null)
         {
             i++;

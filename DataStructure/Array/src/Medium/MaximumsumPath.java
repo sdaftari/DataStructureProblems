@@ -24,12 +24,13 @@ public class MaximumsumPath {
 
 	public static void main(String[] args) {
 		MaximumsumPath sumpath = new MaximumsumPath();
-        int ar1[] = {2, 3, 7, 10, 12, 15, 30, 34};
-        int ar2[] = {1, 5, 7, 8, 10, 15, 16, 19};
+//        int ar1[] = {2, 3, 7, 10, 12, 15, 30, 34};
+//        int ar2[] = {1, 5, 7, 8, 10, 15, 16, 19};
+		int ar1[] = {2, 3, 7, 10, 12};
+        int ar2[] = {1, 5, 7, 8};
         int m = ar1.length;
         int n = ar2.length;
-        System.out.println("Maximum sum path is :" + 
-                                       sumpath.maxPathSum(ar1, ar2, m, n));
+        System.out.println("Maximum sum path is :" + sumpath.maxPathSum(ar1, ar2, m, n));
 	}
 	
 	int maxPathSum (int[] arr1, int[] arr2, int m, int n)
@@ -39,6 +40,7 @@ public class MaximumsumPath {
 		
 		while (i < m && j < n)
 		{
+			// Add the smaller number
 			if (arr1[i] < arr2[j])
 				s1 += arr1[i++];
 			else if (arr2[j] < arr1[i])

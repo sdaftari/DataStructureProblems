@@ -62,14 +62,18 @@ public class MergeIntervals {
 	public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> list = new LinkedList<>();
         Interval pre = newInterval;
-        for(Interval curr: intervals){
-            if(pre.end < curr.start) {
+        for(Interval curr: intervals)
+        {
+            if(pre.end < curr.start) 
+            {
                 list.add(pre);
                 pre = curr;
-            } else if (curr.end < pre.start) {   //Here is the difference.
+            } 
+            else if (curr.end < pre.start) 
+                // Here is the difference.
                 list.add(curr);
-            }
-            else {
+            else 
+            {
                 pre.start = Math.min(pre.start, curr.start);
                 pre.end = Math.max(pre.end, curr.end);
             }
@@ -80,7 +84,8 @@ public class MergeIntervals {
 	
 	// Remove overlapping intervals
 	public int eraseOverlapIntervals(Interval[] intervals) {
-        if (intervals.length == 0)  return 0;
+        if (intervals.length == 0)  
+        	return 0;
 
         Arrays.sort(intervals, new myComparator());
         int end = intervals[0].end;

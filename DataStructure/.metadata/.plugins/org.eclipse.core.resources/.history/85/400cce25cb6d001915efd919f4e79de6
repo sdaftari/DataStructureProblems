@@ -1,0 +1,25 @@
+base2 function is quite basis of basis.
+check last digit, shift to right.
+base-2 is totally no difference, just add a sign -.
+
+
+Time Complexity:
+O(logN) Time, O(logN) space.
+
+package Medium;
+
+public class ConvertToBase2 {
+
+	public String baseNeg2(int N) 
+	{
+        int num = 1;
+        while (num < N) num = (num << 2) + 1;
+        return Integer.toBinaryString(num ^ (num - N));
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

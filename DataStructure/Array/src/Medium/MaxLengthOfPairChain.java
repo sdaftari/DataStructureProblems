@@ -17,6 +17,7 @@ public class MaxLengthOfPairChain {
         {
             sum++;
             int curEnd = pairs[i][1];
+            // increment i till start of next chain is less than end
             while (i+1 < n && pairs[i+1][0] <= curEnd) 
                 i++;
         }

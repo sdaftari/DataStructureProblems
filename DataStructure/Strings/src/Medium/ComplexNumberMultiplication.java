@@ -13,9 +13,9 @@ public class ComplexNumberMultiplication {
         String result = "";
         String[] A = a.split("\\+");
         String[] B = b.split("\\+");
+        
         int a1 = Integer.parseInt(A[0]);
         int b1 = Integer.parseInt(A[1].replace("i",""));
-
         int a2 = Integer.parseInt(B[0]);
         int b2 = Integer.parseInt(B[1].replace("i",""));
 

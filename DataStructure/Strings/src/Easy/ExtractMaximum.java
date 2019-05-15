@@ -28,12 +28,13 @@ public class ExtractMaximum {
         for (int i = 0; i<n; i++) 
         { 
             // Ignore leading zeroes 
-            while (i<n && str.charAt(i)=='0') 
+            while (i < n && str.charAt(i)=='0') 
                 i++; 
        
             // Store numeric value into a string 
-            while (i<n && Character.isDigit(str.charAt(i))) 
+            while (i < n && Character.isDigit(str.charAt(i))) 
             { 
+            	// Append the digits
                 curr_num = curr_num + str.charAt(i); 
                 i++; 
             } 
@@ -59,7 +60,7 @@ public class ExtractMaximum {
         return maximumNum(curr_num, res); 
     } 
     
- // Utility method to find maximum string 
+    // Utility method to find maximum string 
     static String maximumNum(String curr_num, String res) 
     { 
         int len1 = curr_num.length(); 

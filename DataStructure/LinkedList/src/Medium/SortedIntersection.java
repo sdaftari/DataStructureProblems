@@ -41,11 +41,12 @@ public class SortedIntersection
 		{
 			if (a.data == b.data)
 			{
-				if (head == null) {
+				if (head == null) 
 					tail = head = new Node(a.data, head);
-				}
-				else {
-					tail = tail.next = new Node(a.data, tail.next);
+				else 
+				{
+					tail.next = new Node(a.data, tail.next);
+					tail = tail.next;
 				}
 
 				a = a.next;
@@ -89,7 +90,7 @@ public class SortedIntersection
 	ListNode head;
 	void getIntersection(ListNode head1, ListNode head2) 
     { 
-		ListNode result = null; 
+		//ListNode result = null; 
 		ListNode t1 = head1; 
   
         // Traverse list1 and search each element of it in list2. 

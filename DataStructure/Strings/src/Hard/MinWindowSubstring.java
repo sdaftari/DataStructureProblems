@@ -6,7 +6,7 @@
 package Hard;
 
 public class MinWindowSubstring {
-	
+	 
 	public String minWindow(String s, String t) 
 	{
         int[] arr = new int[128];
@@ -15,19 +15,26 @@ public class MinWindowSubstring {
         }
 
         int counter = t.length(), left = 0, right = 0, window = Integer.MAX_VALUE, head = -1;
-        while (right < s.length()) {
+        while (right < s.length()) 
+        {
+        	// Move to right and decrement the counter when the character from pattern is found
             char rc = s.charAt(right++);
             if (arr[rc] > 0) {
                 counter--;
             }
             arr[rc]--;
 
-            while (counter == 0) {
-                if (right - left < window) {
-                    window = right - (head = left);
+            // Once the counter is zero, move the left pointer
+            while (counter == 0) 
+            {
+                if (right - left < window) 
+                {
+                    window = right - left;
+                    head = left;
                 }
 
                 char lc = s.charAt(left++);
+                // Increment the counter only if the count current left is 0
                 if (arr[lc] == 0) {
                     counter++;
                 }
@@ -38,8 +45,10 @@ public class MinWindowSubstring {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String s = "ADOBECODEBANC";
+		String t = "ABC";
+		MinWindowSubstring obj = new MinWindowSubstring();
+		System.out.println(obj.minWindow(s, t));
 	}
 
 }

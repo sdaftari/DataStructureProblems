@@ -26,11 +26,13 @@ public class FlattenLinkedList {
     {
         // if first linked list is empty then second
         // is the answer
-        if (a == null)     return b;
+        if (a == null)     
+        	return b;
  
         // if second linked list is empty then first
         // is the result
-        if (b == null)      return a;
+        if (b == null)      
+        	return a;
  
         // compare the data members of the two lonked lists
         // and put the larger one in the result

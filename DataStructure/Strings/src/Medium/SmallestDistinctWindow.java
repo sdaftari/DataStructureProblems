@@ -46,10 +46,7 @@ public class SmallestDistinctWindow {
             } 
         } 
        
-        // Now follow the algorithm discussed in below 
-        // post. We basically maintain a window of characters 
-        // that contains all characters of given string. 
-        // https://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/  
+        // We basically maintain a window of characters that contains all characters of given string.   
         int start = 0, start_index = -1; 
         int min_len = Integer.MAX_VALUE; 
        
@@ -60,8 +57,7 @@ public class SmallestDistinctWindow {
             // Count occurrence of characters of string 
             curr_count[str.charAt(j)]++; 
        
-            // If any distinct character matched, 
-            // then increment count 
+            // If any distinct character matched, then increment count 
             if (curr_count[str.charAt(j)] == 1 ) 
                 count++; 
        

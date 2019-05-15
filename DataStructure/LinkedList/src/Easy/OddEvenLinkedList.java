@@ -14,6 +14,8 @@ public class OddEvenLinkedList {
 	            odd = odd.next;
 	            even = even.next;
 	        }
+	        
+	        // Connect odd last node with even head
 	        odd.next = evenHead; 
 	    }
 	    return head;

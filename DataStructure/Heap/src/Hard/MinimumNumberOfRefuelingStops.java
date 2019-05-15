@@ -16,21 +16,27 @@ public class MinimumNumberOfRefuelingStops {
 	
 	public int minRefuelStops(int target, int startFuel, int[][] stations) {
         Queue<Integer> pq = new PriorityQueue<>();
-        int i = 0, res;
-        for (res = 0; startFuel < target; res++) 
+        int i = 0, res = 0;
+        while (startFuel < target) 
         {
+        	// while the distance is < start fuel, add it in the queue
             while (i < stations.length && stations[i][0] <= startFuel)
-                pq.offer(-stations[i++][1]);
+                pq.offer(stations[i++][1]);
             if (pq.isEmpty()) 
                 return -1;
-            startFuel += -pq.poll();
+            // if we are short of fuel, poll the station and add the gas. Increment the counter
+            startFuel += pq.poll();
+            res++;
         }
         return res;
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int target = 100;
+		int startFuel = 10;
+		int[][] stations = {{10,60},{20,30},{30,30},{60,40}};
+		MinimumNumberOfRefuelingStops obj = new MinimumNumberOfRefuelingStops();
+		System.out.println(obj.minRefuelStops(target, startFuel, stations));
 	}
 
 }

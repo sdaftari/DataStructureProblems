@@ -44,7 +44,7 @@ public class BoundaryOfBinaryTree {
             return;
         nodes.add(root.val);
         
-        // If left child is null, trace the child child
+        // If left child is null, trace the right child
         if(root.left == null) 
             leftBoundary(root.right);
         else 

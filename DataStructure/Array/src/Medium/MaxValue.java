@@ -17,8 +17,7 @@
 package Medium;
 
 public class MaxValue {
-	// Returns maximum value of (arr[i]-i) -  
-    // (arr[j]-j) 
+	// Returns maximum value of (arr[i]-i) - (arr[j]-j) 
     static int findMaxDiff(int arr[], int n)     
     { 
         if (n < 2) 
@@ -27,15 +26,9 @@ public class MaxValue {
             return 0; 
         } 
   
-        // Find maximum of value of arr[i] - i  
-        // for all possible values of i. Let  
-        // this value be max_val. Find minimum 
-        // of value of arr[i] - i for all 
-        // possible values of i. Let this value 
-        // be min_val. The difference max_val - 
-        // min_v 
-        int min_val = Integer.MAX_VALUE, 
-            max_val = Integer.MIN_VALUE; 
+        // Find maximum of value of arr[i] - i for all possible values of i (max_val). Find minimum of value of arr[i] - i for all possible values of i (min_val). 
+        // The difference max_val - min_v 
+        int min_val = Integer.MAX_VALUE,max_val = Integer.MIN_VALUE; 
           
         for (int i = 0; i < n; i++) 
         { 

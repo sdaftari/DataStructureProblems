@@ -19,15 +19,16 @@ import java.util.*;
 public class SlidingWindowMaximum {
 	
 	public int[] maxSlidingWindow(int[] a, int k) {		
-		if (a == null || k <= 0) {
+		if (a == null || k <= 0) 
 			return new int[0];
-		}
+		
 		int n = a.length;
 		int[] r = new int[n-k+1];
 		int ri = 0;
 		// store index
 		Deque<Integer> q = new ArrayDeque<>();
-		for (int i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) 
+		{
 			// remove numbers out of range k
 			while (!q.isEmpty() && q.peek() < i - k + 1) {
 				q.poll();

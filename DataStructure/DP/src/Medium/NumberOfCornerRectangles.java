@@ -30,7 +30,7 @@ public class NumberOfCornerRectangles {
                         counter++;
                 }
                 
-                // If there are multiple vertical lines found, the two of them can be chosen using combination formula (n()n-1)/2
+                // If there are multiple vertical lines found, the two of them can be chosen using combination formula (n*n-1)/2
                 if (counter > 0) 
                     ans += counter * (counter - 1) / 2;
             }

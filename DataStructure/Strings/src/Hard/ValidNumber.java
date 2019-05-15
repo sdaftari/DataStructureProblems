@@ -33,17 +33,20 @@ public class ValidNumber {
         boolean eSeen = false;
         boolean numberSeen = false;
         boolean numberAfterE = true;
-        for(int i=0; i<s.length(); i++) {
+        for(int i=0; i<s.length(); i++) 
+        {
+        	// If its a number between 0-9, make numberseen = true and numberAfterE true
             if('0' <= s.charAt(i) && s.charAt(i) <= '9') 
             {
                 numberSeen = true;
                 numberAfterE = true;
             } 
+            // If . is encountered, check if . is already seen or e is seen
             else if(s.charAt(i) == '.') 
             {
                 if(eSeen || pointSeen) 
                     return false;
-                
+                // If . is not seen already, make it seen
                 pointSeen = true;
             } 
             else if(s.charAt(i) == 'e') 
@@ -58,7 +61,8 @@ public class ValidNumber {
             {
                 if(i != 0 && s.charAt(i-1) != 'e') 
                     return false;
-            } else 
+            } 
+            else 
                 return false;
         }
 

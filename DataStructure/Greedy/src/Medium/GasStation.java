@@ -1,11 +1,11 @@
+//There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
+//You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+//Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1.
 //Example 1:
-//
 //Input: 
 //gas  = [1,2,3,4,5]
 //cost = [3,4,5,1,2]
-//
 //Output: 3
-//
 //Explanation:
 //Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
 //Travel to station 4. Your tank = 4 - 1 + 5 = 8
@@ -22,38 +22,28 @@ package Medium;
 public class GasStation {
 	
 	public int canCompleteCircuit(int[] gas, int[] cost) {
-        int trySum = 0;
+		if(gas == null || gas.length == 0 || cost == null || cost.length == 0) 
+            return 0;
+        int sum = 0;
+        for(int i = 0;i< gas.length;i++)
+            sum += gas[i] - cost[i];
         
-        for(int i = 0;i < gas.length; i++) 
-        {
-            int temp = gas[i] - cost[i];
-            trySum += temp; 
-        }
-        
-        if(trySum < 0) 
+        if(sum < 0) 
             return -1;
-        int start = 0;
-        int len = cost.length;
-        for(int i = 0; i < len; i++)
-        {
-            int sum = 0;
-            for(int j = i ;  j < i + len; j++)
-            {
-                sum += gas[j%len] - cost[j%len];
-                if(sum < 0) 
-                {
-                    i = j%len;    //one line to optimize from O(n^2) to O(n)
-                    break;
-                }
-            }
-            
-            if(sum >= 0)
-                return i;
-            else
-                continue;
-        }
         
-        return -1;
+        int start = 0;
+        for(int i = 0, localSum = 0; i < gas.length; i++)
+        {
+            localSum += gas[i] - cost[i];   
+            //localSum of [start,i] < 0
+            if(localSum < 0)
+            {
+            	//update start
+                start = i+1;                            
+                localSum = 0;
+            }
+        }
+        return start;
     }
 
 	public static void main(String[] args) {

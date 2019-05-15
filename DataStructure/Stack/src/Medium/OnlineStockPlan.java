@@ -27,7 +27,7 @@ public class OnlineStockPlan {
     
     public int next(int price) {
         int res = 1;
-        // if current value is greater pop the values and count the # till it was less than or equal to current price
+        // if current value is greater, pop the values and count the # till it was less than or equal to current price
         while (!stack.isEmpty() && stack.peek()[0] <= price)
             res += stack.pop()[1];
         // Push if current value is less than last value

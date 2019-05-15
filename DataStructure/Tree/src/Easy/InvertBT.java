@@ -33,12 +33,11 @@ public class InvertBT {
             node.left = node.right;
             node.right = left;
             
-            if(node.left != null) {
+            if(node.left != null) 
                 queue.offer(node.left);
-            }
-            if(node.right != null) {
+            
+            if(node.right != null) 
                 queue.offer(node.right);
-            }
         }
         
         return root;

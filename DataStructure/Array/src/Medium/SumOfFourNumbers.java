@@ -92,7 +92,8 @@ public class SumOfFourNumbers {
 		int i = low, j = high, sum, x;
 		while (i < j) {
 			sum = nums[i] + nums[j];
-			if (sum == target) {
+			if (sum == target) 
+			{
 				fourSumList.add(Arrays.asList(z1, z2, nums[i], nums[j]));
 
 				x = nums[i];

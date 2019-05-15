@@ -11,11 +11,12 @@
 
 package Hard;
 
-public class LongestIncreasingPathInMatrix {
-	
+public class LongestIncreasingPathInMatrix 
+{	
 	public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     
-    public int longestIncreasingPath(int[][] matrix) {
+    public int longestIncreasingPath(int[][] matrix) 
+    {
         if(matrix.length == 0) 
         	return 0;
         int m = matrix.length, n = matrix[0].length;
@@ -42,7 +43,7 @@ public class LongestIncreasingPathInMatrix {
         {
             int x = i + dir[0], y = j + dir[1];
             if(x < 0 || x >= m || y < 0 || y >= n || matrix[x][y] <= matrix[i][j]) 
-            	continue;
+            	continue;                                                                                                  
             int len = 1 + dfs(matrix, x, y, m, n, cache);
             max = Math.max(max, len);
         }
@@ -54,5 +55,4 @@ public class LongestIncreasingPathInMatrix {
 		// TODO Auto-generated method stub
 
 	}
-
 }

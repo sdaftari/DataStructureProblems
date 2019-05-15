@@ -1,65 +1,55 @@
+//Two elements of a binary search tree (BST) are swapped by mistake.
+//
+//Recover the tree without changing its structure.
+//
+//Example 1:
+//
+//Input: [1,3,null,null,2]
+//
+//   1
+//  /
+// 3
+//  \
+//   2
+//
+//Output: [3,1,null,null,2]
+//
+//   3
+//  /
+// 1
+//  \
+//   2
+
 package Medium;
 
 public class CorrectBST {
-	TreeNode first, middle, last, prev;
-    public TreeNode correctBST(TreeNode root)
-    {
-        first = middle = last = prev = null;
- 
-        // Set the pointers to find out 
-        // two nodes
-        correctBSTUtil(root);
- 
-        // Fix (or correct) the tree
-        if( first != null && last != null )
-        {
-            int temp = first.val;
-            first.val = last.val;
-            last.val = temp; 
-        }
-        // Adjacent nodes swapped
-        else if( first != null && middle != null ) 
-        {
-            int temp = first.val;
-            first.val = middle.val;
-            middle.val = temp;
-        }
-        return root;
-    }
+	TreeNode preNode = null;
+    TreeNode firstNode = null;
+    TreeNode secondNode = null;
     
-    public void correctBSTUtil(TreeNode root)
+    public void recoverTree(TreeNode root) 
     {
-        if( root != null )
+        if (root == null)
+            return;
+        traverse(root);
+        int tmp = firstNode.val;
+        firstNode.val = secondNode.val;
+        secondNode.val = tmp;
+    }
+    private void traverse(TreeNode root) 
+    {
+        if (root == null)
+            return;
+        traverse(root.left);
+        if (preNode != null) 
         {
-            // Recur for the left subtree
-            correctBSTUtil( root.left);
- 
-            // If this node is smaller than
-            // the previous node, it's 
-            // violating the BST rule.
-            if (prev != null && root.val < prev.val)
-            {
-                // If this is first violation,
-                // mark these two nodes as
-                // 'first' and 'middle'
-                if (first == null)
-                {
-                    first = prev;
-                    middle = root;
-                }
- 
-                // If this is second violation,
-                // mark this node as last
-                else
-                    last = root;
-            }
- 
-            // Mark this node as previous
-            prev = root;
- 
-            // Recur for the right subtree
-            correctBSTUtil( root.right);
+            if (firstNode == null && preNode.val >= root.val)
+                firstNode = preNode;
+            if (firstNode != null && preNode.val >= root.val)
+                secondNode = root;
         }
+        preNode = root;
+        traverse(root.right);
     }
 
 	public static void main(String[] args) {

@@ -41,7 +41,7 @@ public class CourseSchedule {
             	// for each course dependent on prereq, decrement the degree
                 indegree[to]--;
                 if (indegree[to] == 0) 
-                    // If the course has only prereq as form, and no more prereqs remianing, add it to queue
+                    // If the course has only prereq as form, and no more prereqs remaining, add it to queue
                     toVisit.offer(to);
             }
             

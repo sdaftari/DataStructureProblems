@@ -13,7 +13,8 @@ public class MinDeleteToMakeSorted {
         int ret = 0;
         for (int i = 0; i < A[0].length(); i++) 
         {
-            if (!isSorted(A, i)) ret++;
+            if (!isSorted(A, i)) 
+            	ret++;
         }
         return ret;
     }

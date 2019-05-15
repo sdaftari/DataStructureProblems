@@ -5,7 +5,7 @@ public class FindHeightOfSpiralTree {
 	public int treeHeight(Node root){
         if (root == null) 
             return 0; 
-        if(root!=null&&isLeaf(root))
+        if(root != null && isLeaf(root))
             return 1;
         
         /* compute the depth of each subtree */
@@ -17,11 +17,9 @@ public class FindHeightOfSpiralTree {
     
     public boolean isLeaf(Node node)
     {
-       if(node != null && node.left != null && node.right != null 
-        && node.left.right == node && node.right.left==node)
-        {
+       if(node != null && node.left != null && node.right != null && node.left.right == node && node.right.left == node)
             return true;
-        }
+       
        return false;
      }
 

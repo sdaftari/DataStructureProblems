@@ -22,13 +22,11 @@ public class PairsWithPositiveAndNegative {
 	static void printPairs(int arr[], int n)  
 	{  
 	    ArrayList<Integer> v = new ArrayList<Integer> ();  
-	    HashMap<Integer,  
-	            Integer> cnt = new HashMap<Integer, Integer>();  
+	    HashMap<Integer, Integer> cnt = new HashMap<>();  
 	  
 	    // For each element of array.  
 	    for (int i = 0; i < n; i++)  
 	    {  
-	  
 	        // If element has not encounter early,  
 	        // mark it on cnt array.  
 	        if (cnt.containsKey(Math.abs(arr[i])))  
@@ -48,8 +46,7 @@ public class PairsWithPositiveAndNegative {
 	  
 	    Collections.sort(v);  
 	    for (int i = 0; i < v.size(); i++)  
-	        System.out.print("-" + v.get(i) +  
-	                         " " + v.get(i) + " ");  
+	        System.out.print("-" + v.get(i) +  " " + v.get(i) + " ");  
 	}  
 
 	public static void main(String[] args) {

@@ -12,6 +12,7 @@ public class PrintNthFromLast
 		
 		if (head != null)
 		{
+			// Move refPtr ahead n steps
 			while(count < n)
 			{
 				if (refPtr != null)
@@ -24,6 +25,8 @@ public class PrintNthFromLast
 			}
 		}
 		
+		// Now mainPtr will be n steps behind the refPtr. 
+		// So when refPtr reaches null, mainPtr reached n steps from end
 		while (refPtr != null)
 		{
 			mainPtr = mainPtr.next;

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Medium.TreeToSortedCircularDLL&apos; to &apos;BSTToSortedCircularDLL&apos;&#x0D;&#x0A;- Original project: &apos;Tree&apos;&#x0D;&#x0A;- Original element: &apos;Medium.TreeToSortedCircularDLL&apos;&#x0D;&#x0A;- Renamed element: &apos;Medium.BSTToSortedCircularDLL&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TreeToSortedCircularDLL&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Medium{TreeToSortedCircularDLL.java[TreeToSortedCircularDLL" matchStrategy="1" name="BSTToSortedCircularDLL" qualified="false" references="true" similarDeclarations="false" stamp="1555959407417" textual="false" version="1.0"/>
+</session>

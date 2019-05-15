@@ -1,0 +1,57 @@
+//Two elements of a binary search tree (BST) are swapped by mistake.
+//
+//Recover the tree without changing its structure.
+//
+//Example 1:
+//
+//Input: [1,3,null,null,2]
+//
+//   1
+//  /
+// 3
+//  \
+//   2
+//
+//Output: [3,1,null,null,2]
+//
+//   3
+//  /
+// 1
+//  \
+//   2
+
+package Medium;
+
+public class CorrectBST {
+	TreeNode preNode = null;
+    TreeNode firstNode = null;
+    TreeNode secondNode = null;
+    
+    public void recoverTree(TreeNode root) {
+        if (root == null)
+            return;
+        traverse(root);
+        int tmp = firstNode.val;
+        firstNode.val = secondNode.val;
+        secondNode.val = tmp;
+    }
+    private void traverse(TreeNode root) {
+        if (root == null)
+            return;
+        traverse(root.left);
+        if (preNode != null) {
+            if (firstNode == null && preNode.val >= root.val)
+                firstNode = preNode;
+            if (firstNode != null && preNode.val >= root.val)
+                secondNode = root;
+        }
+        preNode = root;
+        traverse(root.right);
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

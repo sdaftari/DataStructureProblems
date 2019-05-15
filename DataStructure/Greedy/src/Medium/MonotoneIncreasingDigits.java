@@ -16,14 +16,14 @@ public class MonotoneIncreasingDigits {
         for(int i = x.length-1;i>0;i--)
         {
             // mark points to the first location of the largest number
-            if(x[i]<x[i-1])
+            if(x[i] < x[i-1])
             {
                 mark = i-1;
                 x[i-1]--;
             }
         }
         
-        for(int i = mark+1;i<x.length;i++)
+        for(int i = mark+1; i < x.length; i++)
             x[i] = '9';
         
         return Integer.parseInt(new String(x));

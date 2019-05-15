@@ -36,6 +36,7 @@ public class ClosestBSTValue {
 		  Stack<Integer> s1 = new Stack<>(); // predecessors
 		  Stack<Integer> s2 = new Stack<>(); // successors
 	
+		  
 		  inorder(root, target, false, s1);
 		  inorder(root, target, true, s2);
 		  
@@ -54,14 +55,17 @@ public class ClosestBSTValue {
 		  return res;
 	}
 
-		// inorder traversal
+	// inorder traversal
 	void inorder(TreeNode root, double target, boolean reverse, Stack<Integer> stack) 
 	{
 		  if (root == null) 
 			  return;
 
 		  inorder(reverse ? root.right : root.left, target, reverse, stack);
+		  
 		  // early terminate, no need to traverse the whole tree
+		  // non-reverse: predecessors should have all values less than target
+		  // reverse: successors should have all values greater than target
 		  if ((reverse && root.val <= target) || (!reverse && root.val > target)) 
 			  return;
 		  // track the value of current node
@@ -70,8 +74,13 @@ public class ClosestBSTValue {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		TreeNode root = new TreeNode(4);
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(5);
+		root.left.left = new TreeNode(1);
+		root.left.right = new TreeNode(3);
+		ClosestBSTValue oj = new ClosestBSTValue();
+		oj.closestKValues(root, 3.5, 4);
 	}
 
 }

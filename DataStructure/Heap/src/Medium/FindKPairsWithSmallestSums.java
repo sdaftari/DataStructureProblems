@@ -8,13 +8,15 @@ package Medium;
 import java.util.*;
 
 public class FindKPairsWithSmallestSums {
-	public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+	public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) 
+	{
         PriorityQueue<int[]> que = new PriorityQueue<>((a,b)->a[0]+a[1]-b[0]-b[1]);
         List<int[]> res = new ArrayList<>();
         
         if(nums1.length==0 || nums2.length==0 || k==0) 
             return res;
         
+        // Add all elements of first array along with first element of second array and index of element
         for(int i=0; i<nums1.length && i<k; i++) 
             que.offer(new int[]{nums1[i], nums2[0], 0});
         
@@ -22,8 +24,12 @@ public class FindKPairsWithSmallestSums {
         {
             int[] cur = que.poll();
             res.add(new int[]{cur[0], cur[1]});
+            
+            // If curr[2] has reached the array2 length then continue with already added elements
             if(cur[2] == nums2.length-1) 
                 continue;
+            
+            // Otherwise add first element of first array with the next element of second array
             que.offer(new int[]{cur[0],nums2[cur[2]+1], cur[2]+1});
         }
         

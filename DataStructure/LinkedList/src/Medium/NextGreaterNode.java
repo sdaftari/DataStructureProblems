@@ -22,7 +22,10 @@ public class NextGreaterNode {
             A.add(node.val);
         int[] res = new int[A.size()];
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < A.size(); ++i) {
+        for (int i = 0; i < A.size(); ++i) 
+        {
+        	// If stack not empty and peek is less than current element, it means greater element is found
+        	// So pop all the smaller elements from stack and save current element as its next greater 
             while (!stack.isEmpty() && A.get(stack.peek()) < A.get(i))
                 res[stack.pop()] = A.get(i);
             stack.push(i);

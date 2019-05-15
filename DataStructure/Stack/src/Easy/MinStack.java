@@ -21,16 +21,18 @@ public class MinStack {
     }
     
     public void push(int x) {
-        if(x <= min){          
+        if(x <= min)
+        {          
             stack.push(min);
-            min=x;
+            min = x;
         }
         stack.push(x);
     }
     
-    public void pop() {
+    public void pop() 
+    {
         if(stack.pop() == min) 
-            min=stack.pop();
+            min = stack.pop();
     }
     
     public int top() {

@@ -1,3 +1,10 @@
+//Get Larget Element using Quick Select
+/*
+ * This logic can also be used to find median of an unsorted array w/o sorting it. Let kth element be nums.length/2 and don't use shuffle technique
+ * In this case expected worst case complexity is O(n), but if random function always select corner elements, then it may be O(n2)
+ * Complexity: O(n) and O(1)
+ * Worst case: o(n2): if array is sorted in ascending order and we always select first element as pivot
+ */
 //O(N) best case / O(N^2) worst case running time + O(1) memory
 package Medium;
 
@@ -7,7 +14,7 @@ public class KthLargestElementInUnsortedArray {
 	
 	public int findKthLargest(int[] nums, int k) 
     {
-        shuffle(nums);
+        //shuffle(nums);
         k = nums.length - k;
         int lo = 0;
         int hi = nums.length - 1;
@@ -24,16 +31,17 @@ public class KthLargestElementInUnsortedArray {
         return nums[k];
     }
     
-    private int partition(int[] a, int lo, int hi) {
-
+    private int partition(int[] a, int lo, int hi) 
+    {
         int i = lo;
         int j = hi + 1;
         while(true) 
         {
         	// Let lo be the pivot
-        	// Find an index i from left where a[i] is greater than a[lo] 
+        	// Find an index i from left where a[i] is greater than equal to a[lo] 
             while(i < hi && less(a[++i], a[lo]));
-            // Find an index j from right where a[j] is smaller than a[lo] 
+            
+            // Find an index j from right where a[j] is smaller than equal to a[lo] 
             while(j > lo && less(a[lo], a[--j]));
             
             // Continue this till i >= j
@@ -45,6 +53,8 @@ public class KthLargestElementInUnsortedArray {
         }
         
         // Exchange j and lo
+        // Also all elements before j would be less than a[j] and all elements to the right would be greater than equal to aj]
+        // So at this point, jth number will get sorted
         exch(a, lo, j);
         return j;
     }

@@ -1,4 +1,4 @@
-//Given an array of 0 and 1. In how many iterations it is possible that the whole array can be filled with 1's, if in a single iteration immediate neighbours of 1's can be filled.
+//Given an array of 0 and 1. In how many iterations it is possible that the whole array can be filled with 1's, if in a single iteration immediate neighbors of 1's can be filled.
 //Examples:
 //Input:
 //2
@@ -18,36 +18,45 @@
 package Medium;
 
 public class FillArrayWithOnes {
-	// Returns count of iterations to fill arr[] 
-    // with 1s. 
+	// Returns count of iterations to fill arr[] with 1s. 
+	// Case 1 : A block of 0s has 1s on both sides
+	//	Let count_zero be the count of zeros in the block.
+	//	Number of iterations are always equal to : count_zero/2, if (count_zero is even) or (cont_zero+1)/2, if(count_zero is odd).
+	//	Case 2 : Either single 1 at the end or in the starting. For example 0 0 0 0 1 and 1 0 0 0 0
+	//	In this case the number of iterations required will always be equal to number of zeros.
+	//	Case 3 : There are no 1s (Array has only 0s)
+	//	In this case array can't be filled with all 1's. 
+	//	So print -1.
+	
     static int countIterations(int arr[], int n) 
     { 
         boolean oneFound = false; 
         int res = 0; 
           
         // Start traversing the array 
-        for (int i=0; i<n; ) 
+        for (int i = 0; i < n; ) 
         { 
             if (arr[i] == 1) 
               oneFound = true; 
        
             // Traverse until a 0 is found 
-            while (i<n && arr[i]==1) 
+            while (i < n && arr[i] == 1) 
                 i++; 
        
             // Count contiguous 0s 
             int count_zero = 0; 
-            while (i<n && arr[i]==0) 
+            while (i < n && arr[i] == 0) 
             { 
                 count_zero++; 
                 i++; 
             } 
        
-            // Condition for Case 3 
+            // Condition for Case 3 There are no 1s (Array has only 0s)
             if (oneFound == false && i == n) 
                 return -1; 
        
-            // Condition to check if Case 1 satisfies: 
+            // Condition to check if Case 1 satisfies: A block of 0s has 1s on both sides
+            // So that in each iteration 0 from both ends can be replaced with 1
             int curr_count; 
             if (i < n && oneFound == true) 
             { 
@@ -63,7 +72,7 @@ public class FillArrayWithOnes {
                 count_zero = 0; 
             } 
        
-            // Case 2 
+            // Case 2 Either single 1 at the end or in the starting. For example 0 0 0 0 1 and 1 0 0 0 0
             else
             { 
                 curr_count = count_zero; 

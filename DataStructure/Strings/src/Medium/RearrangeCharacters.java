@@ -61,11 +61,10 @@ public class RearrangeCharacters {
            for (int i = 0; i < n; i++) 
                 count[str.charAt(i) - 'a']++; 
 
-            // Insert all characters with their frequencies 
-            // into a priority_queue  
-            PriorityQueue<Key> pq = new PriorityQueue<>(new 
-                                                        KeyComparator()); 
-            for (char c = 'a'; c <= 'z'; c++) { 
+            // Insert all characters with their frequencies into a priority_queue  
+            PriorityQueue<Key> pq = new PriorityQueue<>(new KeyComparator()); 
+            for (char c = 'a'; c <= 'z'; c++) 
+            { 
                  int val = c - 'a'; 
                  if (count[val] > 0) 
                      pq.add(new Key(count[val], c)); 
@@ -80,24 +79,18 @@ public class RearrangeCharacters {
             Key prev = new Key(-1, '#'); 
 
             // traverse queue 
-            while (pq.size() != 0) { 
-              
-                   // pop top element from queue and add it 
-                   // to string. 
-                   Key k = pq.peek(); 
-                   pq.poll(); 
-                   str = str + k.ch; 
+            while (pq.size() != 0) 
+            {
+            	// pop top element from queue and add it to string. 
+                Key k = pq.poll();
+                str = str + k.ch; 
+                // If frequency of previous character is less than zero that means it is useless, we need not to push it  
+                if (prev.freq > 0) 
+                    pq.add(prev); 
 
-                   // If frequency of previous character is less 
-                   // than zero that means it is useless, we 
-                   // need not to push it  
-                   if (prev.freq > 0) 
-                       pq.add(prev); 
-
-                   // make current character as the previous 'char' 
-                   // decrease frequency by 'one' 
-                   (k.freq)--; 
-                    prev = k; 
+                // make current character as the previous 'char' decrease frequency by 'one' 
+                (k.freq)--; 
+                prev = k; 
             } 
 
             // If length of the resultant string and original 

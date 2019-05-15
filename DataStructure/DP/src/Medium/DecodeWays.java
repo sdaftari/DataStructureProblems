@@ -21,9 +21,8 @@ public class DecodeWays {
 	
 	public int numDecodings(String s) {
         if(s == null || s.length() == 0) 
-        {
             return 0;
-        }
+        
         int n = s.length();
         int[] dp = new int[n+1];
         // If string is empty
@@ -47,8 +46,10 @@ public class DecodeWays {
 	public int numDecodingsII(String s) {
         long[] res = new long[2];
         res[0] = ways(s.charAt(0));
+        
         // if s has only one character, return res[0]
-        if(s.length() < 2) return (int)res[0];
+        if(s.length() < 2) 
+        	return (int)res[0];
         
         res[1] = res[0] * ways(s.charAt(1)) + ways(s.charAt(0), s.charAt(1));
         

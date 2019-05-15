@@ -3,8 +3,8 @@ package Medium;
 public class DivideTwoIntegers {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		DivideTwoIntegers obj = new DivideTwoIntegers();
+		System.out.println(obj.divide(12, 4));
 	}
 
 	public int divide(int dividend, int divisor) {

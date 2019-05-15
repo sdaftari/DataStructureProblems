@@ -54,10 +54,11 @@ public class IntersectionOfTwoLL {
             } 
             current1 = current1.next; 
         } 
-        while (current1 != null && current2 != null) { 
-            if (current1.val == current2.val) { 
+        while (current1 != null && current2 != null) 
+        { 
+            if (current1.val == current2.val) 
                 return current1.val; 
-            } 
+            
             current1 = current1.next; 
             current2 = current2.next; 
         } 

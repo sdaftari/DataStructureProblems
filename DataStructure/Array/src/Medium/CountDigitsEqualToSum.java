@@ -19,30 +19,34 @@ package Medium;
 
 public class CountDigitsEqualToSum {
 	
-	private static void findCount(int n, int sum) 
-	{
-        
-        //in case n = 2 start is 10 and end is (100-1) = 99 
+	private void findCount(int n, int sum) 
+	{        
+        //Ex: in case n = 2 start is 10 and end is (100-1) = 99 
         int start = (int) Math.pow(10, n-1); 
         int end = (int) Math.pow(10, n)-1;  
       
         int count = 0; 
         int i = start; 
           
-                while(i < end) { 
-              
+        while(i < end) 
+        {              
             int cur = 0; 
             int temp = i; 
-              
-            while( temp != 0) { 
+            
+            // Take each number from start to end and find sum of digits 
+            while(temp != 0) 
+            { 
                 cur += temp % 10; 
                 temp = temp / 10; 
             } 
               
-            if(cur == sum) {              
-                count++;              
+            if(cur == sum) 
+            {              
+                count++;  
+                // Once the sum is matched, it wont match for next 9 numbers
                 i += 9;          
-            }else
+            }
+            else
                 i++; 
               
         }      

@@ -40,7 +40,7 @@ public class CopyLinkedListWithNextAndRandom {
 		if (head == null)
 			return head;
 		
-		// Create duplicate nodes
+		// Create duplicate nodes using next pointers
 		ListNodeRandom curr = head;
 		while (curr != null)
 		{

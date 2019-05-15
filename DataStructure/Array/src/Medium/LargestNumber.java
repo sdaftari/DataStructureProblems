@@ -30,9 +30,7 @@ public class LargestNumber {
 		
 		String[] s_nums = new String[nums.length];
 		for (int i = 0; i < nums.length; i++)
-		{
 			s_nums[i] = String.valueOf(nums[i]);
-		}
 		
 		Comparator<String> comp = new Comparator<String>() 
 		{
@@ -52,7 +50,7 @@ public class LargestNumber {
     
 		StringBuilder sb = new StringBuilder();
 		for(String s: s_nums)
-		        sb.append(s);
+			sb.append(s);
 		
 		return sb.toString();
 	}

@@ -1,3 +1,12 @@
+//Given a singly linked list containing n nodes. Modify the value of first half nodes such that 1st node’s new value is equal to the last node’s value minus first node’s current value, 
+// 2nd node’s new value is equal to the second last node’s value minus 2nd node’s current value, likewise for first half nodes. If n is odd then the value of the middle node remains unchanged.
+//(No extra memory to be used).
+//Examples:
+//Input : 10 -> 4 -> 5 -> 3 -> 6
+//Output : 4 -> 1 -> 5 -> 3 -> 6
+//Input : 2 -> 9 -> 8 -> 12 -> 7 -> 10
+//Output : -8 -> 2 -> -4 -> 12 -> 7 -> 10
+
 package Hard;
 
 public class ModifyLinkedList {
@@ -17,7 +26,6 @@ public class ModifyLinkedList {
         front = modifyTheContentsOf1stHalf(front, back); 
         
         ListNode tempBack = back;
-        ListNode tempFront = front;
         
         // modify the contents of 1st half     
         front = modifyTheContentsOf2ndtHalf(front, back); 
@@ -122,7 +130,7 @@ public class ModifyLinkedList {
           
          /* 'slow' is before the midpoint in the list,  
             so split it in two at that point. */
-        front = head; 
+        //front = head; 
         back = slow.next; 
         slow.next = null; 
         return back;

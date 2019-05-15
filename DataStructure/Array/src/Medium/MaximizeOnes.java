@@ -16,7 +16,7 @@ package Medium;
 
 public class MaximizeOnes {
 	
-	static int arr[] = new int[]{1, 0, 0, 1, 1, 0, 1, 0, 1, 1}; 
+	static int arr[] = new int[]{1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1}; 
     
     // m is maximum of number zeroes allowed to flip 
     static void findZeroes(int m) 
@@ -30,30 +30,28 @@ public class MaximizeOnes {
         // Count of zeroes in current window 
         int zeroCount = 0;  
       
-        // While right boundary of current window doesn't cross  
-        // right end 
+        // While right boundary of current window doesn't cross right end 
         while (wR < arr.length) 
         { 
-            // If zero count of current window is less than m, 
-            // widen the window toward right 
+            // If zero count of current window is less than m, widen the window toward right 
             if (zeroCount <= m) 
             { 
                 if (arr[wR] == 0) 
-                zeroCount++; 
+                	zeroCount++; 
+                // Increment wR in case of 0 and 1
                 wR++; 
             } 
       
-            // If zero count of current window is more than m, 
-            // reduce the window from left 
+            // If zero count of current window is more than m, reduce the window from left 
             if (zeroCount > m) 
             { 
                 if (arr[wL] == 0) 
-                zeroCount--; 
+                	zeroCount--; 
                 wL++; 
             } 
       
-            // Update widest window if this window size is more 
-            if ((wR-wL > bestWindow) && (zeroCount<=m)) 
+            // Update widest window if this window size is more than best window size and count o zeros is less than max
+            if ((wR-wL > bestWindow) && (zeroCount <= m)) 
             { 
                 bestWindow = wR-wL; 
                 bestL = wL; 
@@ -69,7 +67,7 @@ public class MaximizeOnes {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		 findZeroes(2); 
 
 	}
 

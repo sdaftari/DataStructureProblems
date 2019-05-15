@@ -1,7 +1,7 @@
 //A robot is located at the top-left corner of a m x n grid .
 //The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid .
 //How many possible unique paths are there?
-
+// Time: O(n^2) Space: O(n^2)
 package Medium;
 
 public class UniquePaths {
@@ -15,15 +15,15 @@ public class UniquePaths {
 	public int uniquePaths(int m, int n) {
         Integer[][] map = new Integer[m][n];
         // Make first col 1
-        for(int i = 0; i<m;i++)
+        for(int i = 0; i < m; i++)
             map[i][0] = 1;
         // Make first row 1
-        for(int j= 0;j<n;j++)
+        for(int j = 0; j < n; j++)
             map[0][j]=1;
         
-        for(int i = 1;i<m;i++)
+        for(int i = 1; i < m; i++)
         {
-            for(int j = 1;j<n;j++)
+            for(int j = 1; j < n; j++)
             {
                 map[i][j] = map[i-1][j] + map[i][j-1];
             }
@@ -44,16 +44,18 @@ public class UniquePaths {
         {
             for(int j = 0; j < cols; j++)
             {
+            	// If its an obstacle, make it 0
                 if(obstacleGrid[i][j] == 1)
                     obstacleGrid[i][j] = 0;
+                // Make origin 1
                 else if(i == 0 && j == 0)
                     obstacleGrid[i][j] = 1;
                 // For row 0, if there are no paths to left cell, then its 0,else 1
                 else if(i == 0)
-                    obstacleGrid[i][j] = obstacleGrid[i][j - 1] * 1;
+                    obstacleGrid[i][j] = obstacleGrid[i][j - 1];
                 // For col 0, if there are no paths to upper cell, then its 0,else 1
                 else if(j == 0)
-                    obstacleGrid[i][j] = obstacleGrid[i - 1][j] * 1;
+                    obstacleGrid[i][j] = obstacleGrid[i - 1][j];
                 else
                     obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
             }

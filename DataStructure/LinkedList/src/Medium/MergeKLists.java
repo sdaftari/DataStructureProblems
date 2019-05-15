@@ -44,7 +44,7 @@ public class MergeKLists {
 			ans = ans.next;
 		}*/
 		
-		ArrayList lists1 = new ArrayList<ListNode>();
+		ArrayList<ListNode> lists1 = new ArrayList<ListNode>();
 		lists1.add(l1);
 		lists1.add(l2);
 		lists1.add(l3);
@@ -69,7 +69,8 @@ public class MergeKLists {
     }
 	
 	private static ListNode merge(ArrayList<ListNode> lists, int lo, int hi) {
-        if (lo == hi) return lists.get(lo);
+        if (lo == hi) 
+        	return lists.get(lo);
          
         int mid = (lo + hi) / 2;
         ListNode l1 = merge(lists, lo, mid);

@@ -12,7 +12,7 @@ public class CountDifferentPalindromicSubsequences
 {
 //	Maintain DP[i][j] to record in substring from i to j(included), the number of palindrome without duplicate. Then we consider two cases of the DP equation:
 //	when s.charAt(i) != s.charAt(j):
-//	dp[i][j] = dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
+//	dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
 //	When s.charAt(i) == s.charAt(j):
 		
 	public int countPalindromicSubsequences(String S) 

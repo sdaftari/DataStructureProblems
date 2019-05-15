@@ -2,60 +2,88 @@ package Medium;
 import java.util.*;
 
 public class HasCycleUndirectedGraph {
-	private int V;   // No. of vertices 
-    private LinkedList<Integer> adj[]; // Adjacency List Represntation 
-    
-	Boolean isCyclic() 
-    { 
-        // Mark all the vertices as not visited and not part of 
-        // recursion stack 
-        Boolean visited[] = new Boolean[V]; 
-        for (int i = 0; i < V; i++) 
-            visited[i] = false; 
-  
-        // Call the recursive helper function to detect cycle in 
-        // different DFS trees 
-        for (int u = 0; u < V; u++) 
-            if (!visited[u]) // Don't recur for u if already visited 
-                if (isCyclicUtil(u, visited, -1)) 
-                    return true; 
-  
-        return false; 
-    } 
-	
-	// A recursive function that uses visited[] and parent to detect 
-    // cycle in subgraph reachable from vertex v. 
-    Boolean isCyclicUtil(int v, Boolean visited[], int parent) 
-    { 
-        // Mark the current node as visited 
-        visited[v] = true; 
-        Integer i; 
-  
-        // Recur for all the vertices adjacent to this vertex 
-        Iterator<Integer> it = adj[v].iterator(); 
-        while (it.hasNext()) 
-        { 
-            i = it.next(); 
-  
-            // If an adjacent is not visited, then recur for that 
-            // adjacent 
-            if (!visited[i]) 
-            { 
-                if (isCyclicUtil(i, visited, v)) 
-                    return true; 
-            } 
-  
-            // If an adjacent is visited and not parent of current 
-            // vertex, then there is a cycle. 
-            else if (i != parent) 
-                return true; 
-        } 
-        return false; 
+	static class Graph
+	{
+        int vertices;
+        LinkedList<Integer> [] adjList;
+
+        public Graph(int vertices) 
+        {
+            this.vertices = vertices;
+            adjList = new LinkedList[vertices];
+            for (int i = 0; i <vertices ; i++) {
+                adjList[i] = new LinkedList<>();
+            }
+        }
+        public void addEdge(int source, int destination)
+        {
+            //add forward edge
+            adjList[source].addFirst(destination);
+
+            //add reverse edge
+            adjList[destination].addFirst(source);
+        }
+
+        public boolean isCycle() 
+        {
+            //visited array
+            boolean[] visited = new boolean[vertices];
+            
+            //do DFS, from each vertex
+            for (int i = 0; i < vertices ; i++) 
+            {
+                if(visited[i] == false)
+                {
+                    if(isCycleUtil(i, visited, -1))
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        boolean isCycleUtil(int currVertex, boolean [] visited, int parent)
+        {
+
+            //add this vertex to visited vertex
+            visited[currVertex] = true;
+
+            //visit neighbors except its direct parent
+            for (int i = 0; i < adjList[currVertex].size() ; i++) 
+            {
+                int vertex = adjList[currVertex].get(i);
+                //check the adjacent vertex from current vertex
+                if(vertex != parent) 
+                {
+                    //if destination vertex is not its direct parent then
+                    if(visited[vertex])
+                    {
+                        //if here means this destination vertex is already visited
+                        //means cycle has been detected
+                        return true;
+                    }
+                    else{
+                        //recursion from destination node
+                        if (isCycleUtil(vertex, visited, currVertex)) 
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
     }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+    public static void main(String[] args) {
+        int vertices = 6;
+        Graph graph = new Graph(vertices);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 2);
+        boolean result = graph.isCycle();
+        System.out.println("is Cycle present: " + result);
+    }
 }

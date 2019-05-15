@@ -1,4 +1,4 @@
-//In a country popular for train travel, you have planned some train travelling one year in advance.  The days of the year that you will travel is given as an array days.  Each day is an integer from 1 to 365.
+//In a country popular for train travel, you have planned some train traveling one year in advance.  The days of the year that you will travel is given as an array days.  Each day is an integer from 1 to 365.
 //Train tickets are sold in 3 different ways:
 //a 1-day pass is sold for costs[0] dollars;
 //a 7-day pass is sold for costs[1] dollars;
@@ -42,6 +42,7 @@ public class MinCostForTicket {
             // minCost(i) = minCost(i - 7) + costs[2]
             // Same case for 30-day pass also.
             min = minCost[day-1] + costs[0];
+            // If the current day is less than 7, consider minCost at 0th day
             min = Math.min(min, minCost[Math.max(0, day-7)] + costs[1]);
             min = Math.min(min, minCost[Math.max(0, day-30)] + costs[2]);
             minCost[day] = min;

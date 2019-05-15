@@ -9,6 +9,10 @@
 //Output: 4
 //Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount you can rob = 1 + 3 = 4.
 
+// Similar to Maximum Sum Such That No Two Elements Are Consecutive
+
+//Complexity O(n)
+
 package Easy;
 
 public class HouseRobber {
@@ -39,20 +43,21 @@ public class HouseRobber {
     
     private int rob(int[] num, int lo, int hi) 
     {
-        int include = 0, exclude = 0;
+    	int prev1 = 0, prev2 = 0;
         for (int j = lo; j <= hi; j++) 
         {
-            int i = include, e = exclude;
-            include = e + num[j];
-            exclude = Math.max(e, i);
+        	int temp = prev1;
+        	prev1 = Math.max(prev1, prev2+num[j]);
+        	prev2 = temp;
         }
-        return Math.max(include, exclude);
+        
+        return prev1;
     }
 	
 	public static void main(String[] args) {
 		HouseRobber obj = new HouseRobber();
 		int[] nums = {5, 5, 10, 100, 10, 5};
-		System.out.println(obj.rob(nums));
+		System.out.println(obj.robII(nums));
 	}
 
 }

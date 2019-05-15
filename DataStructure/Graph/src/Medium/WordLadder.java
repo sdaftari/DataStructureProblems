@@ -1,4 +1,4 @@
-//Example 1:
+  //Example 1:
 //Input:
 //beginWord = "hit",
 //endWord = "cog",
@@ -36,7 +36,7 @@ public class WordLadder {
         {
             if (beginSet.size() > endSet.size()) 
             {
-                // Swap two sets
+                // Swap two sets 5to keep smaller set as begin set
                 Set<String> set = beginSet;
                 beginSet = endSet;
                 endSet = set;

@@ -32,7 +32,8 @@ public class KeysAndRooms {
                 {
                     seen.add(j);
                     dfs.add(j);
-                    if (rooms.size() == seen.size()) return true;
+                    if (rooms.size() == seen.size()) 
+                    	return true;
                 }
             }            
         }

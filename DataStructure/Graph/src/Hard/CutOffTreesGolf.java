@@ -29,12 +29,16 @@ public class CutOffTreesGolf {
         	return 0;
         int m = forest.size(), n = forest.get(0).size();
 
+        // pq will store co-ordinates of trees having height > 1 in increasing order
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[2] - b[2]);
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++) 
+            {
             	// If height is greater than 1, then only add it as tree   
-                if (forest.get(i).get(j) > 1) {
+                if (forest.get(i).get(j) > 1) 
+                {
                 	// Add i, j co-ordinates and the height in increasing order of height
                     pq.add(new int[] {i, j, forest.get(i).get(j)});
                 }
@@ -46,6 +50,9 @@ public class CutOffTreesGolf {
         while (!pq.isEmpty()) 
         {
             int[] tree = pq.poll();
+            
+            // Calculate min steps required to reach that tree
+            // Start is 0,0 for first tree and then it becomes the previous tree
             int step = minStep(forest, start, tree, m, n);
 
             if (step < 0) 
@@ -60,10 +67,12 @@ public class CutOffTreesGolf {
         return sum;
     }
     
-    private int minStep(List<List<Integer>> forest, int[] start, int[] tree, int m, int n) {
+    private int minStep(List<List<Integer>> forest, int[] start, int[] tree, int m, int n) 
+    {
         int step = 0;
         boolean[][] visited = new boolean[m][n];
         Queue<int[]> queue = new LinkedList<>();
+        
         queue.add(start);
         visited[start[0]][start[1]] = true;
 

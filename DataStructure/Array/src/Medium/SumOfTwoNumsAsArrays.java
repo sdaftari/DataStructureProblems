@@ -19,15 +19,12 @@
 package Medium;
 
 public class SumOfTwoNumsAsArrays {
-	// Return sum of two number represented by  
-    // the arrays. Size of a[] is greater than  
-    // b[]. It is made sure be the wrapper  
-    // function 
-    static int calSumUtil(int a[], int b[],  
-                                int n, int m) 
+	// Return sum of two number represented by the arrays. 
+    // Size of a[] is greater than b[]. It is made sure be the wrapper function 
+    static int calSumUtil(int a[], int b[], int n, int m) 
     { 
         // array to store sum. 
-        int[] sum= new int[n]; 
+        int[] sum = new int[n]; 
       
         int i = n - 1, j = m - 1, k = n - 1; 
       
@@ -39,8 +36,7 @@ public class SumOfTwoNumsAsArrays {
         // the size of array in wrapper function. 
         while (j >= 0)  
         { 
-            // find sum of corresponding element 
-            // of both array. 
+            // find sum of corresponding element of both array. 
             s = a[i] + b[j] + carry; 
               
             sum[k] = (s % 10); 
@@ -53,8 +49,7 @@ public class SumOfTwoNumsAsArrays {
             j--; 
         } 
       
-        // If second array size is less  
-        // the first array size. 
+        // If second array size is less the first array size. 
         while (i >= 0)  
         { 
             // Add carry to first array elements. 
@@ -68,13 +63,13 @@ public class SumOfTwoNumsAsArrays {
       
         int ans = 0; 
       
-        // If there is carry on adding 0 index  
-        // elements  append 1 to total sum. 
+        // If there is carry on adding 0 index elements  append 1 to total sum. 
         if (carry == 1) 
             ans = 10; 
       
         // Converting array into number. 
-        for ( i = 0; i <= n - 1; i++) { 
+        for ( i = 0; i <= n - 1; i++) 
+        { 
             ans += sum[i]; 
             ans *= 10; 
         } 
@@ -83,11 +78,9 @@ public class SumOfTwoNumsAsArrays {
     } 
       
     // Wrapper Function 
-    static int calSum(int a[], int b[], int n, 
-                                        int m) 
+    static int calSum(int a[], int b[], int n, int m) 
     { 
-        // Making first array which have 
-        // greater number of element 
+        // Making first array which have greater number of element 
         if (n >= m) 
             return calSumUtil(a, b, n, m); 
       

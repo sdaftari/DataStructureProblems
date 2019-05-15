@@ -13,8 +13,8 @@
 package Medium;
 import java.util.*;
 
-public class CalculateFraction {
-	
+public class CalculateFraction 
+{	
 	// Function to return the required fraction 
 	// in string format 
 	String calculateFraction(int num, int den) 
@@ -53,36 +53,35 @@ public class CalculateFraction {
 	    int rem = num % den;  
 	    Map<Integer, Integer> mp = new HashMap<>(); 
 	  
-	    // Position at which fraction starts repeating 
-	    // if it exists 
+	    // Position at which fraction starts repeating if it exists 
 	    int index = -1; 
 	    boolean repeating = false; 
-	    while (rem > 0 && !repeating) { 
-	  
-	        // If this remainder is already seen, 
+	    while (rem > 0 && !repeating) 
+	    { 	  
+	        // If this remainder is already BullsAndCows seen, 
 	        // then there exists a repeating fraction. 
 	        if (mp.containsKey(rem)) 
 	        { 
-	  
 	            // Index to insert parentheses 
 	            index = mp.get(rem); 
 	            repeating = true; 
 	            break; 
 	        } 
 	        else
+	        	// insert the index to insert a parenthesis
 	            mp.put(rem, res.length()); 
 	  
 	        rem = rem * 10; 
 	  
-	        // Calculate quotient, append it to result and 
-	        // calculate next remainder 
+	        // Calculate quotient, append it to result and calculate next remainder 
 	        int temp = rem / den; 
 	        res += String.valueOf(temp); 
 	        rem = rem % den; 
 	    } 
 	  
 	    // If repeating fraction exists, insert parentheses. 
-	    if (repeating) { 
+	    if (repeating) 
+	    { 
 	        res += ")"; 
 	        res = res.substring(0, index) + "(" + res.substring(index);
 	    } 

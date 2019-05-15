@@ -83,8 +83,9 @@ public class RottenOranges {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[][] grid = {{2,1,1},{1,1,0},{0,1,1}};
+		RottenOranges obj = new RottenOranges();
+		System.out.println(obj.orangesRotting(grid));
 	}
 
 }

@@ -1,3 +1,9 @@
+//Given an integer array, your task is to find all the different possible increasing subsequences of the given array, and the length of an increasing subsequence should be at least 2 .
+//
+//Example:
+//Input: [4, 6, 7, 7]
+//Output: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
+
 package Medium;
 import java.util.*;
 
@@ -27,7 +33,8 @@ public class IncreasingSubsequence {
     }
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		IncreasingSubsequence obj = new IncreasingSubsequence();
+		System.out.println(obj.findSubsequences(new int[] {1, 3, 100, 5, 9}));
 
 	}
 

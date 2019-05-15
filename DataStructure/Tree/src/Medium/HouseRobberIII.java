@@ -37,7 +37,15 @@ public class HouseRobberIII {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		TreeNode root = new TreeNode(3);
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(3);
+		
+		root.left.right = new TreeNode(3);
+		
+		root.right.right = new TreeNode(1);
+		HouseRobberIII obj = new HouseRobberIII();
+		obj.rob(root);
 
 	}
 

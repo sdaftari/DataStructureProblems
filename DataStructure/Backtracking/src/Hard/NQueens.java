@@ -15,6 +15,7 @@ public class NQueens {
             System.out.println();
         }
     }
+    
 	public static void main(String[] args) {
 		NQueens objNQueens = new NQueens();
 		objNQueens.SolveNQueens();
@@ -25,8 +26,7 @@ public class NQueens {
 		int board[][] = {{0, 0, 0, 0},
 	            		{0, 0, 0, 0},
 	            		{0, 0, 0, 0},
-	            		{0, 0, 0, 0}
-	        };
+	            		{0, 0, 0, 0}};
 		
 		if (SolveNQueensUtil(board, 0) == false)
 		{
@@ -64,7 +64,8 @@ public class NQueens {
 	{
 		int i, j;
 		// At this point, column-1 queens are already placed in upper rows at first available space.
-		// So we need to check only left side
+		// So we need to check all the positions along the left side only
+		// check for same row along the left side
 		for (i = 0; i < col; i++)
             if (board[row][i] == 1)
                 return false;

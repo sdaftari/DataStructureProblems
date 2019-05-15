@@ -15,7 +15,8 @@ public class LongestUnivaluePath {
 	int len;
     public int longestUnivaluePath(TreeNode root) 
     {
-        if (root == null) return 0;
+        if (root == null) 
+        	return 0;
         len = 0;
         getLen(root, root.val);
         return len;
@@ -28,7 +29,8 @@ public class LongestUnivaluePath {
         int left = getLen(node.left, node.val);
         int right = getLen(node.right, node.val);
         len = Math.max(len, left + right);
-        if (val == node.val)  return Math.max(left, right) + 1;
+        if (val == node.val)  
+        	return Math.max(left, right) + 1;
         return 0;
     }
 

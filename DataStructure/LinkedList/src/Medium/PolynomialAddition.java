@@ -23,7 +23,6 @@ public class PolynomialAddition
 		PolyNode poly; 
 		PolyNode dummy = new PolyNode(0, 0);
 		poly = dummy;
-		boolean isFirst = true;
 		
         int pow = 0, coef = 0;
         while(p1 != null && p2 != null) 
@@ -56,12 +55,7 @@ public class PolynomialAddition
             } 
               
             // Dynamically create new node 
-            poly.next = new PolyNode(coef, pow);            
-//            if (isFirst)
-//            {
-//            	dummy.next = poly;
-//            	isFirst = false;
-//            }
+            poly.next = new PolyNode(coef, pow);  
             poly = poly.next;            
         }
         

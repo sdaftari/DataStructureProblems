@@ -14,7 +14,7 @@ public class SortedInsertInCircularQueue {
   
         } 
   
-        // Case 2 of the above algo 
+        // Case 2 of the above algo : new value is less than head
         else if (current.val >= new_node.val) 
         { 
   
@@ -28,13 +28,12 @@ public class SortedInsertInCircularQueue {
             head = new_node; 
         } 
   
-        // Case 3 of the above algo 
+        // Case 3 of the above algo : new value is somewhere in middle
         else
         { 
   
             /* Locate the node before the point of insertion */
-            while (current.next != head && 
-                   current.next.val < new_node.val) 
+            while (current.next != head && current.next.val < new_node.val) 
                 current = current.next; 
   
             new_node.next = current.next; 

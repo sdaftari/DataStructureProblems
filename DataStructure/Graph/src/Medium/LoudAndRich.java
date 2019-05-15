@@ -28,7 +28,7 @@ public class LoudAndRich {
         for (int i = 0; i < n; ++i) 
             richer2.put(i, new ArrayList<Integer>());
         
-        // Keep track of richer people
+        // Keep track of richer people. Add people richer than key
         for (int[] v : richer)
             richer2.get(v[1]).add(v[0]);
         

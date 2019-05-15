@@ -20,9 +20,7 @@
 //{2, 1, 4} => Length = 3 
 //{3, 4} => Length = 2 
 //So, 3 + 2 = 5 is the answer
-//
 //Test Case 2: {1, 2, 3, 2, 3, 4, 1} => Length = 7
-//
 //Test Case 3:
 //{4} => Length = 1 
 //{4, 3, 1} => Length = 3 
@@ -32,9 +30,9 @@ package Medium;
 
 public class SumOfLengthsOfMaxSubarray {
 	
-	// Returns max sum of lengths with maximum element 
-    // as k 
-    static int calculateMaxSumLength(int arr[], int n, int k) { 
+	// Returns max sum of lengths with maximum element as k 
+    static int calculateMaxSumLength(int arr[], int n, int k) 
+    { 
         int ans = 0; // final sum of lengths 
   
         // number of elements in current subarray 
@@ -43,26 +41,25 @@ public class SumOfLengthsOfMaxSubarray {
         // variable for checking if k appeared in subarray 
         int flag = 0; 
   
-        for (int i = 0; i < n;) { 
+        for (int i = 0; i < n;) 
+        { 
             count = 0; 
             flag = 0; 
   
-            // count the number of elements which are 
-            // less than equal to k 
-            while (i < n && arr[i] <= k) { 
+            // count the number of elements which are less than equal to k 
+            while (i < n && arr[i] <= k) 
+            { 
                 count++; 
                 if (arr[i] == k) 
                     flag = 1; 
                 i++; 
             } 
   
-            // if current element appeared in current 
-            // subarray add count to sumLength 
+            // if current element appeared in current subarray add count to sumLength 
             if (flag == 1) 
                 ans += count; 
   
-            // skip the array elements which are 
-            // greater than k 
+            // skip the array elements which are greater than k 
             while (i < n && arr[i] > k) 
                 i++; 
         } 

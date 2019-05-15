@@ -9,8 +9,9 @@ import java.util.*;
 public class LargestAreaInHistogram {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] heights = {2,1,5,6,2,3};
+		LargestAreaInHistogram obj = new LargestAreaInHistogram();
+		System.out.println(obj.largestRectangleArea(heights));
 	}
 
 	public int largestRectangleArea(int[] heights) {

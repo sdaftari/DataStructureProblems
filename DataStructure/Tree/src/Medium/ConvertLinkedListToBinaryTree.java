@@ -29,22 +29,17 @@ public class ConvertLinkedListToBinaryTree {
             return null; 
         } 
         
-        // 1.) The first node is always the root node, and 
-        //     add it to the queue 
+        // 1.) The first node is always the root node, and add it to the queue 
         node = new TreeNode(head.val); 
         q.add(node); 
    
         // advance the pointer to the next node 
         head = head.right; 
    
-        // until the end of linked list is reached, do the 
-        // following steps 
         while (head != null)  
         { 
-            // 2.a) take the parent node from the q and  
-            //      remove it from q 
-        	TreeNode parent = q.peek(); 
-        	TreeNode pp = q.poll(); 
+            // 2.a) take the parent and  remove it from q 
+        	TreeNode parent = q.poll(); 
                
             // 2.c) take next two nodes from the linked list. 
             // We will add them as children of the current  
@@ -55,6 +50,7 @@ public class ConvertLinkedListToBinaryTree {
             leftChild = new TreeNode(head.val); 
             q.add(leftChild); 
             head = head.right; 
+            
             if (head != null)  
             { 
                 rightChild = new TreeNode(head.val); 

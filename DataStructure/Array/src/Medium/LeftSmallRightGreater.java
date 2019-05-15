@@ -1,23 +1,13 @@
-
-// To be corrected
-
 //Given an unsorted array of size N. Find the first element in array such that all of its left elements are smaller and all right elements to it are greater than it.
 //Example:
-//Input:
-//3
-//4
-//4 2 5 7
-//3
-//11 9 12
-//6
-//4 3 2 7 8 9
-//
-//Output:
-//5
-//-1
-//7
-//Explanation:
-//Testcase 1 : Elements on left of 5 are smaller than 5 and on right of it are greater than 5.
+//Input:   arr[] = {5, 1, 4, 3, 6, 8, 10, 7, 9};
+//Output:  Index of element is 4
+//All elements on left of arr[4] are smaller than it
+//and all elements on right are greater.// 
+//Input:   arr[] = {5, 1, 4, 4};
+//Output:  Index of element is -1
+//Time Complexity: O(n)
+//Auxiliary Space: O(n)
 
 package Medium;
 
@@ -37,7 +27,7 @@ public class LeftSmallRightGreater {
 	    int rightMin = Integer.MAX_VALUE; 
 	  
 	    // Traverse array from right 
-	    for (int i=n; i>=0; i--) 
+	    for (int i = n-1; i >= 0; i--) 
 	    { 
 	        // Check if we found a required element 
 	        if (leftMax[i] < arr[i] && rightMin > arr[i]) 
@@ -52,7 +42,7 @@ public class LeftSmallRightGreater {
 	} 
 
 	public static void main(String[] args) {
-		int[] arr = {4, 2, 5, 7};
+		int[] arr = {5, 1, 4, 3, 6, 8, 10, 7, 9};
 		LeftSmallRightGreater obj = new LeftSmallRightGreater();
 		System.out.println(obj.findElement(arr, arr.length));
 	}

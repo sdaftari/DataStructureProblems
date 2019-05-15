@@ -33,11 +33,13 @@ public class LongestConsecutiveSequence {
             {
                 int val = num;
                 int sum = 1;
+                // Remove numbers before that
                 while(set.remove(val-1)) 
                     val--;
                 sum += num - val;
                 
                 val = num;
+                // Remove numbers after that
                 while(set.remove(val+1)) 
                     val++;
                 sum += val - num;

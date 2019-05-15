@@ -43,6 +43,27 @@ public class PalindromeLinkedList {
         
         return pre;
     }
+    
+ // Recursive
+ 	public ListNode reverseListRe(ListNode head) {
+         return recursiveReverseList(head, null);
+     }
+ 	
+ 	private ListNode recursiveReverseList(ListNode cur, ListNode prev) 
+ 	{
+         if(cur == null) return null;
+         
+         if(cur.next == null) 
+         { 
+        	 // tail -> head
+             cur.next = prev;
+             return cur; 
+         }
+         
+         ListNode next = cur.next;
+         cur.next = prev;
+         return recursiveReverseList(next, cur);
+     }
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

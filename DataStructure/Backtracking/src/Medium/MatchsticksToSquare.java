@@ -22,6 +22,7 @@ public class MatchsticksToSquare {
         
         // Fix the edge of a square
         this.edge = totalSum / 4;  // the square edge length
+        
         Arrays.sort(nums);
 
         int remainCount = nums.length;
@@ -47,7 +48,7 @@ public class MatchsticksToSquare {
             return false;
         
         // backTracking method.
-        for (int i = nums.length -1; i >= 0; i--)
+        for (int i = nums.length-1; i >= 0; i--)
         {
             if(used[i])
             	continue;

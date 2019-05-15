@@ -15,16 +15,19 @@ public class EqualSums {
 	
 	public static boolean isEqual(int arr[],int n)
     {
-        if(n<4)
-        return false;
-        List<Integer> hash=new ArrayList<Integer>();
-        for(int i=0;i<n;i++)
-        for(int j=i+1;j<n;++j)
+        if(n < 4)
+         return false;
+        List<Integer> hash = new ArrayList<Integer>();
+        // for each i, form a pair with rest and add sum to set
+        for(int i = 0; i < n; i++)
         {
-            int sum=arr[i]+arr[j];
-            if(hash.contains(sum))
-            return true;
-            hash.add(sum);
+	        for(int j = i+1; j < n; ++j)
+	        {
+	            int sum = arr[i] + arr[j];
+	            if(hash.contains(sum))
+	            	return true;
+	            hash.add(sum);
+	        }
         }
         return false;
     }

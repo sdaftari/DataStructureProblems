@@ -30,13 +30,16 @@ public class FriendRequests {
 	public int numFriendRequests(int[] ages) {
         int[] map = new int[121];
         
+        // Saves age as key and #people having that age as value
         for(int age:ages)
             map[age]++;
         
-        for(int i=1;i<map.length;i++)
+        // Add the ages of previous once to current so that age[B] > age[A] is satisfied
+        for(int i = 1; i < map.length; i++)
             map[i] += map[i-1];
         
         int friendRequest = 0;
+        // Add if age[B] <= 0.5 * age[A] + 7 is satisfied
         for(int age:ages)
             friendRequest += Math.max(0, map[age] - map[(age/2)+7] - 1);
         

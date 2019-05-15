@@ -9,26 +9,24 @@ package Medium;
 public class NutsAndBolts {
 	
 	// Method which works just like quick sort 
-//	We can use quick sort technique to solve this. We represent nuts and bolts in character array for understanding the logic.
-//	Nuts represented as array of character
-//	char nuts[] = {‘@’, ‘#’, ‘$’, ‘%’, ‘^’, ‘&’}
-//	Bolts represented as array of character
-//	char bolts[] = {‘$’, ‘%’, ‘&’, ‘^’, ‘@’, ‘#’}
+	//	We can use quick sort technique to solve this. We represent nuts and bolts in character array for understanding the logic.
+	//	Nuts represented as array of character
+	//	char nuts[] = {‘@’, ‘#’, ‘$’, ‘%’, ‘^’, ‘&’}
+	//	Bolts represented as array of character
+	//	char bolts[] = {‘$’, ‘%’, ‘&’, ‘^’, ‘@’, ‘#’}
     private static void matchPairs(char[] nuts, char[] bolts, int low, int high) 
     { 
         if (low < high) 
         { 
             // Choose last character of bolts array for nuts partition. 
-//        	This algorithm first performs a partition by picking last element of bolts array as pivot, rearrange the array of nuts and returns the partition index ‘i’ such that 
-//        	all nuts smaller than nuts[i] are on the left side and all nuts greater than nuts[i] are on the right side. 
+        	// This algorithm first performs a partition by picking last element of bolts array as pivot, rearrange the array of nuts and returns the partition index ‘i’ such that 
+        	// all nuts smaller than nuts[i] are on the left side and all nuts greater than nuts[i] are on the right side. 
             int pivot = partition(nuts, low, high, bolts[high]); 
   
-            // Now using the partition of nuts choose that for bolts 
-            // partition. 
+            // Now using the partition of nuts choose that for bolts partition. 
             partition(bolts, low, high, nuts[pivot]); 
   
-            // Recur for [low...pivot-1] & [pivot+1...high] for nuts and 
-            // bolts array. 
+            // Recur for [low...pivot-1] & [pivot+1...high] for nuts and bolts array. 
             matchPairs(nuts, bolts, low, pivot-1); 
             matchPairs(nuts, bolts, pivot+1, high); 
         } 
@@ -42,12 +40,15 @@ public class NutsAndBolts {
         char temp1, temp2; 
         for (int j = low; j < high; j++) 
         { 
-            if (arr[j] < pivot){ 
+            if (arr[j] < pivot)
+            { 
                 temp1 = arr[i]; 
                 arr[i] = arr[j]; 
                 arr[j] = temp1; 
                 i++; 
-            } else if(arr[j] == pivot){ 
+            } 
+            else if(arr[j] == pivot)
+            { 
                 temp1 = arr[j]; 
                 arr[j] = arr[high]; 
                 arr[high] = temp1; 
@@ -64,8 +65,9 @@ public class NutsAndBolts {
     } 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		char[] nuts = {'@', '#', '$', '%', '^', '&'};
+		char bolts[] = {'$', '%', '&', '^', '@', '#'};
+		matchPairs(nuts, bolts, 0, nuts.length);
 	}
 
 }

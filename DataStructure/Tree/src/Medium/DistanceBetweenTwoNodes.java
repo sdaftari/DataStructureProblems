@@ -23,8 +23,7 @@ public class DistanceBetweenTwoNodes {
             return LCA(root.right, n1, n2); 
     } 
 	
-	// Returns level of key k if it is present in 
-    // tree, otherwise returns -1 
+	// Returns level of key k if it is present in tree, otherwise returns -1 
     public static int findLevel(Node root, int a, int level) 
     { 
         if (root == null) 
@@ -37,6 +36,7 @@ public class DistanceBetweenTwoNodes {
         return left; 
     } 
   
+    // Find distance between two nodes in binary tree
     public static int findDistance(Node root, int a, int b) 
     { 
         Node lca = LCA(root, a, b); 
@@ -48,6 +48,7 @@ public class DistanceBetweenTwoNodes {
         return d1 + d2; 
     } 
     
+    // Distance between two nodes in BST
     // For BST, we can make it faster by choosing left or right child depending upon the values of nodes
     public int findDistWrapper(Node root, int a, int b)  
     {  
@@ -78,8 +79,7 @@ public class DistanceBetweenTwoNodes {
 	     if (root.val < a && root.val < b) // same path  
 	         return distanceBetween2(root.right, a, b);  
 	   
-	     // Lie in opposite directions (Root is  
-	     // LCA of two nodes)  
+	     // Lie in opposite directions (Root is 	LCA of two nodes)  
 	     if (root.val >= a && root.val <= b)  
 	         return distanceFromRoot(root, a) + distanceFromRoot(root, b); 
 	           

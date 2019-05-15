@@ -5,8 +5,7 @@ public class ExtraElement {
 	// Returns index of extra element  
     // in arr1[]. n is size of arr2[]. 
     // Size of arr1[] is n-1. 
-    static int findExtra(int arr1[],  
-                         int arr2[], int n) 
+    static int findExtra(int arr1[], int arr2[], int n) 
     { 
         // Initialize result 
         int index = n;  

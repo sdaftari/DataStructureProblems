@@ -25,10 +25,12 @@ public class MinimumInSortedRotatedArray {
     { 
         // This condition is needed to handle the case when array 
         // is not rotated at all 
-        if (high < low)  return arr[0]; 
+        if (high < low)  
+        	return arr[0]; 
   
         // If there is only one element left 
-        if (high == low) return arr[low]; 
+        if (high == low) 
+        	return arr[low]; 
   
         // Find mid 
         int mid = low + (high - low)/2; /*(low + high)/2;*/

@@ -9,28 +9,27 @@ public class RotateMatrixKTimes {
     static void rotateMatrixRight(int matrix[][], int k) 
     { 
         // temporary array of size M 
-        int temp[]=new int[M]; 
+        int temp[] = new int[M]; 
           
         // within the size of matrix 
         k = k % M; 
           
         for (int i = 0; i < N; i++) 
-        { 
-          
+        {           
             // copy first M-k elements  
             // to temporary array 
             for (int t = 0; t < M - k; t++) 
-            temp[t] = matrix[i][t]; 
+            	temp[t] = matrix[i][t]; 
           
             // copy the elements from k  
             // to end to starting 
             for (int j = M - k; j < M; j++) 
-            matrix[i][j - M + k] = matrix[i][j]; 
+            	matrix[i][j - M + k] = matrix[i][j]; 
           
             // copy elements from  
             // temporary array to end 
             for (int j = k; j < M; j++) 
-            matrix[i][j] = temp[j - k]; 
+            	matrix[i][j] = temp[j - k]; 
         } 
     } 
     
@@ -44,12 +43,11 @@ public class RotateMatrixKTimes {
         k = k % M; 
           
         for (int i = 0; i < N; i++) 
-        { 
-           
-            // copy first M-k elements  
+        {            
+            // copy first k elements  
             // to temporary array 
             for (int t = 0; t < k; t++) 
-            temp[t] = matrix[i][t]; 
+            	temp[t] = matrix[i][t]; 
           
             // copy the elements from k  
             // to end to starting 
@@ -59,7 +57,7 @@ public class RotateMatrixKTimes {
             // copy elements from  
             // temporary array to end 
             for (int j = M-k; j < M; j++) 
-            matrix[i][j] = temp[j-1];
+            	matrix[i][j] = temp[j-1];
         } 
     } 
       

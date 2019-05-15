@@ -12,8 +12,9 @@ import java.util.*;
 
 public class BaseballGame {
 
-	public int calPoints(String[] ops) {
-        Stack<Integer> stack = new Stack();
+	public int calPoints(String[] ops) 
+	{
+        Stack<Integer> stack = new Stack<>();
 
         for(String op : ops) 
         {
@@ -34,7 +35,8 @@ public class BaseballGame {
         }
 
         int ans = 0;
-        for(int score : stack) ans += score;
+        for(int score : stack) 
+        	ans += score;
         return ans;
     }
 	

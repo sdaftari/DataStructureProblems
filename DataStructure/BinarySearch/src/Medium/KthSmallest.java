@@ -8,7 +8,8 @@ public class KthSmallest {
 	}
 
 	// In sorted matrix
-	public int kthSmallest(int[][] matrix, int k) {
+	public int kthSmallest(int[][] matrix, int k) 
+	{
         int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1];//[lo, hi)
         while(lo < hi) 
         {

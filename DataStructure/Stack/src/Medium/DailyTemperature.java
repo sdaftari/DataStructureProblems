@@ -31,5 +31,4 @@ public class DailyTemperature {
 		// TODO Auto-generated method stub
 
 	}
-
 }

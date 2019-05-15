@@ -18,12 +18,12 @@
 package Medium;
 import java.util.*;
 
-public class SHortestWordDistance {
+public class ShortestWordDistance {
 	
 	private Map<String, List<Integer>> map;
 
 	// Class implementation of shortest distance
-    public SHortestWordDistance(String[] words) {
+    public ShortestWordDistance(String[] words) {
         map = new HashMap<String, List<Integer>>();
         for (int i = 0; i < words.length; i++)
         {

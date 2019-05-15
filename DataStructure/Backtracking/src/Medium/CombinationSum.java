@@ -31,8 +31,8 @@ import java.util.*;
 public class CombinationSum {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		CombinationSum obj = new CombinationSum();
+		System.out.println(obj.combinationSum1(new int[] {1, 2, 3}, 4));
 	}
 
 	public List<List<Integer>> combinationSum1(int[] candidates, int target) {
@@ -128,6 +128,7 @@ public class CombinationSum {
 	public int combinationSum4(int[] nums, int target) {
         int[] comb = new int[target + 1];
         comb[0] = 1;
+        // Similar to #ways to achieve the combination sum
         for (int i = 1; i < comb.length; i++) 
         {
             for (int j = 0; j < nums.length; j++) 

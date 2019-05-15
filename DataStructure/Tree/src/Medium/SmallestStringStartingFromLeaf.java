@@ -17,7 +17,7 @@ public class SmallestStringStartingFromLeaf {
             String l = helper(root.left);
             String r = helper(root.right);
             if(l.length() > 0 && r.length() > 0)
-                return (( (l.compareTo(r)<0) ? l: r) + (char)(root.val+'a'));
+                return (( (l.compareTo(r) < 0) ? l: r) + (char)(root.val + 'a'));
             else if(l.length() > 0)
                 return l + (char)(root.val+'a');
             else

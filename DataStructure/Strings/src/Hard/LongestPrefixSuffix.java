@@ -16,16 +16,16 @@
 //Time Complexity : O(n)
 //Auxiliary Space : O(n)
 
+//Name lps indicates longest proper prefix which is also suffix.. 
+//A proper prefix is prefix with whole string not allowed. For example, prefixes of “ABC” are “”, “A”, “AB” and “ABC”. Proper prefixes are “”, “A” and “AB”. Suffixes of the string are “”, “C”, “BC” and “ABC”.
+
 package Hard;
 
 public class LongestPrefixSuffix {
 
-	// Returns length of the longest prefix 
-    // which is also suffix and the two do 
-    // not overlap. This function mainly is 
-    // copy computeLPSArray() of in below post 
-    // https://www.geeksforgeeks.org/searching- 
-    // for-patterns-set-2-kmp-algorithm/ 
+	// Returns length of the longest prefix which is also suffix and the two do not overlap. 
+    // kmp-algorithm/ 
+	// Example: aaaa - 2
     static int longestPrefixSuffix(String s) 
     { 
         int n = s.length(); 
@@ -54,10 +54,8 @@ public class LongestPrefixSuffix {
              // (pat[i] != pat[len]) 
             else
             { 
-                // This is tricky. Consider 
-                // the example. AAACAAAA 
-                // and i = 7. The idea is 
-                // similar to search step. 
+                // if len'th character does not match, lps[len-1] will tell us how many previous characters are matching
+            	// So we go back those many steps in pattern, i remaining the same
                 if (len != 0) 
                 { 
                     len = lps[len-1]; 
@@ -67,6 +65,8 @@ public class LongestPrefixSuffix {
                 } 
                   
                 // if (len == 0) 
+                // if len == 0, it means no character has matched yet
+                // or not a single character is matching so increment i in string and make lps = 0
                 else 
                 { 
                     lps[i] = 0; 
@@ -82,8 +82,24 @@ public class LongestPrefixSuffix {
         return (res > n/2)? n/2 : res; 
     } 
     
+    // Prper prefix and suffix 
+    // Overlapping is allowed
+    // Ex: aaaa - 3
+    private static int find(String str, int n) 
+    {	
+		int len = 0;
+	    
+	   for(int i=1;i<n;i++)
+	   {
+		   if(str.substring(0,i).equals(str.substring(n-i,n)))
+			   len = i;
+	   }
+	
+	   return len;
+	}
+    
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println(find("aaaa", 4));
 
 	}
 

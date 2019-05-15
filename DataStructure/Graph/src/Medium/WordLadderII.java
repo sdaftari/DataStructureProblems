@@ -21,6 +21,7 @@ public class WordLadderII {
         if (!dict.contains(endWord)) 
             return res;
         
+        // getChildren return map of a begin word as key and all reachable words as values
         Map<String, List<String>> map = getChildren(beginWord, endWord, dict);
         List<String> path = new ArrayList<>();
         path.add(beginWord);
@@ -56,10 +57,13 @@ public class WordLadderII {
         end.add(endWord);
         
         boolean found = false;
+        
+        // This flag helps to create a map of parent and children (obtained by replacing just one character) 
         boolean isBackward = false;
         
         while (!start.isEmpty() && !found) 
         {
+        	// Since we are traversing over start set, we are considering it smaller set
             if (start.size() > end.size()) 
             {
                 Set<String> tem = start;
@@ -71,11 +75,13 @@ public class WordLadderII {
             for (String cur : start) 
             {
                 visited.add(cur);
+                // getNext return words present in word list  by replacing each character in begin word 
                 for (String next : getNext(cur, dict)) 
                 {
                     if (visited.contains(next) || start.contains(next)) 
                         continue;
                     
+                    // If complete sequences is found, found flag will be set to true. So no need to traverse after that
                     if (end.contains(next))
                         found = true;
                     
@@ -119,8 +125,12 @@ public class WordLadderII {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String beginWord = "hit";
+		String endWord = "cog";
+		String[] wordList = {"hot","dot","dog","lot","log","cog"};
+		WordLadderII obj = new WordLadderII();
+		List<String> input = Arrays.asList(wordList);
+		obj.findLadders(beginWord, endWord, input);
 	}
 
 }

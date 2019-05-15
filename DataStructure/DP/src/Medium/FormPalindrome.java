@@ -1,5 +1,6 @@
 //Minimum insertions to form a palindrome. Given a string, find the minimum number of characters to be inserted to convert it to palindrome.
-//The problem of finding minimum insertions can also be solved using Longest Common Subsequence (LCS) Problem. If we find out LCS of string and its reverse, we know how many maximum characters can form a palindrome. We need insert remaining characters. Following are the steps.
+//The problem of finding minimum insertions can also be solved using Longest Common Subsequence (LCS) Problem. 
+//If we find out LCS of string and its reverse, we know how many maximum characters can form a palindrome. We need insert remaining characters. Following are the steps.
 //1) Find the length of LCS of input string and its reverse. Let the length be ‘l’.
 //2) The minimum number insertions needed is length of input string minus ‘l’.
 //
@@ -56,7 +57,7 @@ public class FormPalindrome {
 	 } 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println(findMinInsertionsLCS("abc", 3));
 
 	}
 

@@ -1,3 +1,19 @@
+//Given a nested list of integers represented as a string, implement a parser to deserialize it.
+//Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+//Note: You may assume that the string is well-formed:
+//String is non-empty.
+//String does not contain white spaces.
+//String contains only digits 0-9, [, - ,, ].
+//Example 2:
+//Given s = "[123,[456,[789]]]",
+//Return a NestedInteger object containing a nested list with 2 elements:
+//
+//1. An integer containing value 123.
+//2. A nested list containing two elements:
+//    i.  An integer containing value 456.
+//    ii. A nested list with one element:
+//         a. An integer containing value 789.
+
 package Medium;
 
 public class MiniParser {
@@ -59,7 +75,8 @@ public class MiniParser {
 //                String num = s.substring(l, r);
 //                if (!num.isEmpty())
 //                    curr.add(new NestedInteger(Integer.valueOf(num)));
-//                // If stack is not empty, the previous list, we need to add this curr to previous list
+//               
+				  // If stack is not empty, the previous list, we need to add this curr to previous list
 //                if (!stack.isEmpty()) 
 //                {
 //                    NestedInteger pop = stack.pop();
@@ -70,10 +87,10 @@ public class MiniParser {
 //            } 
 //            else if (ch == ',') 
 //            {
-//                // If previous char is ot ], it is not an end of list.
+//                // If previous char is not ], it is not an end of list. since each input ends with ],
 //                if (s.charAt(r-1) != ']') 
 //                {
-//                    // Sp retrieve the number and add it to the list
+//                    // So retrieve the number and add it to the list
 //                    String num = s.substring(l, r);
 //                    curr.add(new NestedInteger(Integer.valueOf(num)));
 //                }

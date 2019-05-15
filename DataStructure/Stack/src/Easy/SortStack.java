@@ -26,15 +26,24 @@ public class SortStack {
                 s.push(tmpStack.pop()); 
             } 
               
-            // push temp in tempory of stack 
+            // push temp in temporary of stack 
             tmpStack.push(tmp); 
         } 
         return tmpStack;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Stack<Integer> s = new Stack<>();
+		s.push(30);
+		s.push(-5);
+		s.push(18);
+		s.push(14);
+		s.push(-3);
+		SortStack obj = new SortStack();
+		Stack<Integer> ans = obj.sort(s);
+		while (!ans.isEmpty())
+			System.out.print(ans.pop() + " ");
+			
 	}
 
 }

@@ -1,0 +1,46 @@
+//Given an array A of positive integers, call a (contiguous, not necessarily distinct) subarray of A good if the number of different integers in that subarray is exactly K.
+//(For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.) Return the number of good subarrays of A.
+//Example 1:
+//Input: A = [1,2,1,2,3], K = 2
+//Output: 7
+//Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].
+//Time Complexity: O(N)
+
+package Hard;
+import java.util.*;
+
+public class SubarraysWithKDifferentIntegers {
+
+	// Write a helper using sliding window, to get the number of subarrays with at most K distinct elements.
+	//Then f(exactly K) = f(atMost K) - f(atMost K-1)
+	public int subarraysWithKDistinct(int[] A, int K) 
+	{
+        return atMostK(A, K) - atMostK(A, K - 1);
+    }
+	
+    int atMostK(int[] A, int K) 
+    {
+        int i = 0, res = 0;
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int j = 0; j < A.length; ++j) 
+        {
+            if (count.getOrDefault(A[j], 0) == 0) 
+            	K--;
+            count.put(A[j], count.getOrDefault(A[j], 0) + 1);
+            while (K < 0) 
+            {
+                count.put(A[i], count.get(A[i]) - 1);
+                if (count.get(A[i]) == 0) 
+                	K++;
+                i++;
+            }
+            res += j - i + 1;
+        }
+        return res;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

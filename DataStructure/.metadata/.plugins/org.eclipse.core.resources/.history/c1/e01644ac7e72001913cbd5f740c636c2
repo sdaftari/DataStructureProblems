@@ -1,0 +1,107 @@
+//Example :
+//Input: [[1,3],[2,6],[8,10],[15,18]]
+//Output: [[1,6],[8,10],[15,18]]
+//Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+
+// Non-Overlapping Intervals
+//Example 1:
+//Input: [ [1,2], [2,3], [3,4], [1,3] ]
+//Output: 1
+//Explanation: [1,3] can be removed and the rest of intervals are non-overlapping.
+
+package Medium;
+import java.util.*;
+
+public class MergeIntervals {
+	
+	public class Interval 
+	{
+	      int start;
+	      int end;
+	      Interval() { start = 0; end = 0; }
+	      Interval(int s, int e) { start = s; end = e; }
+	  }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public List<Interval> merge(List<Interval> intervals) 
+	{
+        if (intervals.size() <= 1)
+	        return intervals;
+		
+		List<Interval> res = new LinkedList<>();
+		// Sort intervals in ascending order of start time
+		intervals.sort((i1,i2) -> Integer.compare(i1.start, i2.start));
+		int start = intervals.get(0).start;
+		int end = intervals.get(0).end;
+		
+		for (Interval interval : intervals)
+		{
+			// Compare next start with previous end
+			if (interval.start <= end)
+				// move end to max value
+				end = Math.max(end, interval.end);
+			else
+			{
+				// if there is no overlapping add it to result
+				// and update start and end values
+				res.add(new Interval(start, end));
+				start = interval.start;
+				end = interval.end;
+			}
+		}
+		
+		// Add the last interval
+	    res.add(new Interval(start, end));
+	    return res;
+    }
+	
+	public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        List<Interval> list = new LinkedList<>();
+        Interval pre = newInterval;
+        for(Interval curr: intervals){
+            if(pre.end < curr.start) {
+                list.add(pre);
+                pre = curr;
+            } else if (curr.end < pre.start) {   //Here is the difference.
+                list.add(curr);
+            }
+            else {
+                pre.start = Math.min(pre.start, curr.start);
+                pre.end = Math.max(pre.end, curr.end);
+            }
+        }
+        list.add(pre);
+        return list;
+    }
+	
+	// Remove overlapping intervals
+	public int eraseOverlapIntervals(Interval[] intervals) {
+        if (intervals.length == 0)  return 0;
+
+        Arrays.sort(intervals, new myComparator());
+        int end = intervals[0].end;
+        int count = 1;
+        
+        for (int i = 1; i < intervals.length; i++) 
+        {
+            if (intervals[i].start >= end) 
+            {
+                end = intervals[i].end;
+                count++;
+            }
+        }
+        return intervals.length - count;
+    }
+    
+    class myComparator implements Comparator<Interval> {
+        public int compare(Interval a, Interval b) {
+            return a.end - b.end;
+        }
+    }
+
+}
+

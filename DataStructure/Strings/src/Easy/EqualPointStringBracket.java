@@ -1,5 +1,5 @@
-//Given a string S of opening and closing brackets '(' and ')' only. The task is to find an equal point. An equal point is an index such that the number of closing brackets on right from that point must be equal to 
-//number of opening brackets before that point.
+//Given a string S of opening and closing brackets '(' and ')' only. The task is to find an equal point. An equal point is an index such that the number of closing brackets on right from that point must 
+// be equal to number of opening brackets before that point.
 //Input : str = "(())))("
 //Output:   4
 //After index 4, string splits into (())
@@ -16,7 +16,7 @@ public class EqualPointStringBracket {
     { 
         int len = str.length(); 
         int open[] = new int[len+1]; 
-        int    close[] = new int[len+1]; 
+        int close[] = new int[len+1]; 
         int index = -1; 
        
         open[0] = 0; 
@@ -55,7 +55,7 @@ public class EqualPointStringBracket {
       
         // check if there is any index at which 
         // both brackets are equal 
-        for (int i=0; i<=len; i++) 
+        for (int i = 0; i <= len; i++) 
             if (open[i] == close[i]) 
                 index = i; 
        

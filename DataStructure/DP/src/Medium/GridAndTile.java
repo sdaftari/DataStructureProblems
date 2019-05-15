@@ -41,11 +41,13 @@ public class GridAndTile {
         int[] dp = new int[n+1]; 
         dp[0] = 0; 
         // Fill the table from d[1] to dp[n] 
-        for(int i=1;i<=n;i++) 
+        for(int i = 1; i <= n; i++) 
         { 
             // Base cases 
+        	// If we have upto three rows, we can only for 1*4 tile in horizontal way
             if (i >= 1 && i <= 3) 
                 dp[i] = 1; 
+            // If we have 4 rpws, we can either fir horizontally or vertically. So 2 ways
             else if (i==4) 
                 dp[i] = 2 ; 
   

@@ -24,11 +24,13 @@ public class MaximalRectangle {
     }
     
     // Largest area in histogram
-    private int calcArea(int[] heights){                        //method of problem 84
+    private int calcArea(int[] heights)
+    {   
+    	//method of problem 84
         if(heights == null || heights.length == 0) 
             return 0;
         int ans = 0;
-        LinkedList<Integer> stack = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
         stack.push(-1);
         for(int i = 0; i <= heights.length; i++)
         {

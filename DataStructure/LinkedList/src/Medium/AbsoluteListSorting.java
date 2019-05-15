@@ -14,8 +14,8 @@ public class AbsoluteListSorting {
         // Traverse list 
         while(curr != null) 
         { 
-            // If curr is smaller than prev, then 
-                        // it must be moved to head 
+            // If curr is smaller than prev, then it must be moved to head 
+        	// since the list is sorted using absolute values
             if(curr.val < prev.val) 
             { 
                 // Detach curr from linked list 
@@ -40,8 +40,13 @@ public class AbsoluteListSorting {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		ListNode root = new ListNode(1);
+		root.next = new ListNode(-2);
+		root.next.next = new ListNode(-3);
+		root.next.next.next = new ListNode(4);
+		root.next.next.next.next = new ListNode(-5);
+		AbsoluteListSorting obj = new AbsoluteListSorting();
+		ListNode ans = obj.sortedList(root);
 	}
 
 }

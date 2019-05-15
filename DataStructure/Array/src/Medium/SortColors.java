@@ -18,7 +18,7 @@ public class SortColors {
 	{
         int pivot0 = 0;
         int pivot2 = nums.length - 1;
-        for(int i = 0;i<= pivot2;)
+        for(int i = 0; i <= pivot2;)
         {
             //0 from the end may swap to nums[i], therefore we should check 2 first then 0
             //swap 2 to the end, and then pivot2--

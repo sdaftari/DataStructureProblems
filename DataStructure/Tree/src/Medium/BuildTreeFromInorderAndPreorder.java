@@ -11,13 +11,14 @@ public class BuildTreeFromInorderAndPreorder {
 		TreeNode(int x) { val = x; }
 	}
 	
-	public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (inorder.length==0) 
+	public TreeNode buildTree(int[] preorder, int[] inorder) 
+	{
+        if (inorder.length == 0) 
             return null; 
         Stack<TreeNode> stack = new Stack<TreeNode>(); 
         TreeNode root = new TreeNode(Integer.MIN_VALUE);
         stack.push(root);
-        // I will track preorder array and j will track inorder array
+        // i will track preorder array and j will track inorder array
         int i=0, j=0;
         TreeNode node = null; 
         TreeNode cur = root; 

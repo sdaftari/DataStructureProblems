@@ -24,41 +24,42 @@ public class RemoveMinimumElements {
         int longest_start = -1, longest_end = 0; 
   
         // Choose different elements as starting point  
-        for (int start = 0; start < n; start++) { 
+        for (int start = 0; start < n; start++) 
+        { 
             // Initialize min and max for the current start  
             int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE; 
   
             // Choose different ending points for current start  
-            for (int end = start; end < n; end++) { 
+            for (int end = start; end < n; end++) 
+            { 
                 // Update min and max if necessary  
                 int val = arr[end]; 
-                if (val < min) { 
+                if (val < min) 
                     min = val; 
-                } 
-                if (val > max) { 
+                
+                if (val > max) 
                     max = val; 
-                } 
+                
   
                 // If the property is violated, then no  
                 // point to continue for a bigger array  
-                if (2 * min <= max) { 
+                if (2 * min <= max) 
                     break; 
-                } 
+                
   
                 // Update longest_start and longest_end if needed  
-                if (end - start > longest_end - longest_start 
-                        || longest_start == -1) { 
+                if (end - start > longest_end - longest_start || longest_start == -1) 
+                { 
                     longest_start = start; 
                     longest_end = end; 
                 } 
             } 
         } 
   
-        // If not even a single element follow the property,  
-        // then return n  
-        if (longest_start == -1) { 
+        // If not even a single element follow the property, then return n  
+        if (longest_start == -1) 
             return n; 
-        } 
+        
   
         // Return the number of elements to be removed  
         return (n - (longest_end - longest_start + 1)); 

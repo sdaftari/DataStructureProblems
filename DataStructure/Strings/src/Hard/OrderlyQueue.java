@@ -24,7 +24,8 @@ public class OrderlyQueue {
         for (int i = 1; i < S.length(); i++) 
         {
             String tmp = S.substring(i) + S.substring(0, i);
-            if (res.compareTo(tmp) > 0) res = tmp;
+            if (res.compareTo(tmp) > 0) 
+            	res = tmp;
         }
         return res;
     }

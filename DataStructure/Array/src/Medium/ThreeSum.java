@@ -2,15 +2,28 @@
 //Given array nums = [-1, 2, 1, -4], and target = 1.
 //The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
+//Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.
+//Example:
+//Input:
+//3 2 4 6 5
+//Output:Yes
+//Explanation:
+//Testcase 1: a=3, b=4, and c=5 forms a pythagorean triplet, so we print "Yes"
+//Time complexity of this method is O(n2).
+
+//Given an unsorted array of positive integers. Find the number of triangles that can be formed with three different array elements as three sides of triangles. 
+//For a triangle to be possible from 3 values, the sum of any two values (or sides) must be greater than the third value (or third side).
+//For example, if the input array is {4, 6, 3, 7}, the output should be 3. There are three triangles possible {3, 4, 6}, {4, 6, 7} and {3, 6, 7}. 
+//Note that {3, 4, 7} is not a possible triangle.
+//
+//Time Complexity: O(n^2).
+
 package Medium;
 import java.util.*;
 
 // Time: O(n^2) for both
 public class ThreeSum {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public List<List<Integer>> threeSum(int[] nums) 
@@ -71,4 +84,66 @@ public class ThreeSum {
         
         return result;
     }
+	
+	 static boolean isTriplet(int arr[], int n) 
+    { 
+        // Square array elements 
+        for (int i=0; i<n; i++) 
+            arr[i] = arr[i]*arr[i]; 
+   
+        // Sort array elements 
+        Arrays.sort(arr); 
+   
+        // Now fix one element one by one and find the other two elements 
+        for (int i = n-1; i >= 2; i--) 
+        { 
+            // To find the other two elements, start two index 
+            // variables from two corners of the array and move 
+            // them toward each other 
+            int l = 0; // index of the first element in arr[0..i-1] 
+            int r = i-1; // index of the last element in arr[0..i-1] 
+            while (l < r) 
+            { 
+                // A triplet found 
+                if (arr[l] + arr[r] == arr[i]) 
+                    return true; 
+   
+                // Else either move 'l' or 'r' 
+                if (arr[l] + arr[r] < arr[i]) 
+                   l++; 
+                else
+                   r--; 
+            } 
+        } 
+   
+        // If we reach here, then no triplet found 
+        return false; 
+    } 
+	 
+	 	// Function to count all possible triangles with arr[] 
+	    // elements 
+	    static int findNumberOfTriangles(int arr[]) 
+	    { 
+	        int n = arr.length; 
+	        Arrays.sort(arr); 	  
+	        int count = 0; 
+	  
+	        for (int i = 0; i < n-2; ++i) 
+	        { 
+	            int k = i + 2; 
+	  
+	            // Fix the second element 
+	            for (int j = i+1; j < n; ++j) 
+	            { 
+	                /* Find the rightmost element which is smaller than the sum of two fixed elements */
+	                while (k < n && arr[i] + arr[j] > arr[k]) 
+	                    ++k; 
+	  
+	                if(k > j) 
+	                	count += k - j - 1; 
+	            } 
+	        } 
+	        return count; 
+	    } 
+
 }

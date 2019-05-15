@@ -12,31 +12,33 @@ public class StringToInteger {
 	
 	public int myAtoi(String str) 
 	{
-        boolean flag_positive = true;
-        char tmp_c;
-        long r = 0;
-        
-        if (str == null || (str = str.trim()).length() == 0)    return 0;
-        
-        if (str.startsWith("-") || str.startsWith("+"))
-        {
-            if (str.startsWith("-"))
-                flag_positive = false;
-            str = str.substring(1);
-        }
-        
-        if (str.length() == 0 || !((tmp_c = str.charAt(0)) >= '0' || tmp_c <= '9'))
-            return 0;
-        
-        for (int i = 0, tmp_i = 0, max = str.length(); i < max && (tmp_c = str.charAt(i)) >= '0' && tmp_c <= '9'; i++)
-        {
-            tmp_i = Integer.parseInt(tmp_c + "");
-            r = r * 10 + tmp_i;
-            if (r > Integer.MAX_VALUE)
-                return flag_positive ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-        }
-        
-        return (int) (flag_positive ? r : -r);
+		// Initialize result 
+        int res = 0;  
+          
+        // Initialize sign as positive 
+        int sign = 1;  
+          
+        // Initialize index of first digit 
+        int i = 0;  
+      
+        // If number is negative, then  
+        // update sign 
+        if (str.charAt(0) == '-') 
+        { 
+            sign = -1;  
+              
+            // Also update index of first 
+            // digit 
+            i++;  
+        } 
+      
+        // Iterate through all digits  
+        // and update the result 
+        for ( ; i < str.length(); ++i) 
+            res = res * 10 + str.charAt(i) - '0'; 
+      
+        // Return result with sign 
+        return sign * res; 
     }
 	
 	

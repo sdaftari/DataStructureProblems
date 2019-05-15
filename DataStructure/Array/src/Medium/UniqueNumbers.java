@@ -23,8 +23,7 @@ public class UniqueNumbers {
             // Find digits and maintain its hash 
             while (num != 0) 
             { 
-                // if a digit occcurs more than 1 time 
-                // then break 
+                // if a digit occcurs more than 1 time then break 
                 if (visited[num % 10]) 
                     break; 
        

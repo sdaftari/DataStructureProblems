@@ -1,0 +1,70 @@
+                                               //Example 3:
+//Input: 
+//asteroids = [10, 2, -5]
+//Output: [10]
+//Explanation: 
+//The 2 and -5 collide resulting in -5.  The 10 and -5 collide resulting in 10.
+//Example 4:
+//Input: 
+//asteroids = [-2, -1, 1, 2]
+//Output: [-2, -1, 1, 2]
+//Explanation: 
+//The -2 and -1 are moving left, while the 1 and 2 are moving right.
+//Asteroids moving the same direction never meet, so no asteroids will meet each other.
+
+package Medium;
+import java.util.*;
+
+public class AsteroidCollision {
+	
+	public int[] asteroidCollision(int[] asteroids) {
+        if (asteroids == null || asteroids.length == 0)
+            return asteroids;
+        
+        int pre = 0, curr = 1, n = asteroids.length;
+        while (curr < n)
+        {
+            // If first two elements have same magnitude but opposite sign, pre will be pre-- and becomes -1
+            // In that case, assign curr to 0th element and increment the count
+            if (pre == -1)
+            {
+                asteroids[0] = asteroids[curr];
+                curr++;
+                pre++;  
+                continue;
+            }
+            else
+            {
+                if (asteroids[pre] > 0 && asteroids[curr] < 0)
+                {
+                    int c1 = Math.abs(asteroids[pre]);
+                    int c2 = Math.abs(asteroids[curr]);
+                    if( c1 == c2)
+                    {
+                        pre--;
+                        curr++;
+                    }
+                    else if(c1 > c2)
+                        curr++;
+                    else
+                        pre--;
+                }
+                // If they are of same sine, move forward
+                else
+                {
+                    pre++;
+                    asteroids[pre] = asteroids[curr];
+                    curr++;
+                }
+            }
+        }
+        
+        return Arrays.copyOf(asteroids, pre + 1);
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

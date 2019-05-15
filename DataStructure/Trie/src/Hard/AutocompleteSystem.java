@@ -44,13 +44,13 @@ public class AutocompleteSystem {
     TrieNode root;
     String prefix;
     
-    public AutocompleteSystem(String[] sentences, int[] times) {
+    public AutocompleteSystem(String[] sentences, int[] times) 
+    {
         root = new TrieNode();
         prefix = "";
         
-        for (int i = 0; i < sentences.length; i++) {
+        for (int i = 0; i < sentences.length; i++) 
             add(sentences[i], times[i]);
-        }
     }
     
     private void add(String s, int count) 

@@ -16,9 +16,7 @@ package Medium;
 
 public class MinimumSumPartition {
 	// Function to find the minimum sum 
-    public static int findMinRec(int arr[], int i, 
-                                int sumCalculated, 
-                                 int sumTotal) 
+    public static int findMinRec(int arr[], int i, int sumCalculated, int sumTotal) 
     { 
         // If we have reached last element. 
         // Sum of one subset is sumCalculated, 
@@ -26,18 +24,14 @@ public class MinimumSumPartition {
         // sumCalculated.  Return absolute  
         // difference of two sums. 
         if (i == 0) 
-            return Math.abs((sumTotal-sumCalculated) - 
-                                   sumCalculated); 
+            return Math.abs((sumTotal-sumCalculated) - sumCalculated); 
        
        
         // For every item arr[i], we have two choices 
         // (1) We do not include it first set 
         // (2) We include it in first set 
         // We return minimum of two choices 
-        return Math.min(findMinRec(arr, i - 1, sumCalculated  
-                                   + arr[i-1], sumTotal), 
-                                 findMinRec(arr, i-1, 
-                                  sumCalculated, sumTotal)); 
+        return Math.min(findMinRec(arr, i - 1, sumCalculated + arr[i-1], sumTotal), findMinRec(arr, i-1, sumCalculated, sumTotal)); 
     } 
        
     // Returns minimum possible difference between 

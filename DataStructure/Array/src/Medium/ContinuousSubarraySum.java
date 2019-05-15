@@ -1,3 +1,4 @@
+//Given a list of non-negative numbers and a target integer k, write a function to check if the array has a continuous subarray of size at least 2 that sums up to the multiple of k, that is, sums up to n*k where n is also an integer.
 //Example 1:
 //Input: [23, 2, 4, 6, 7],  k=6
 //Output: True
@@ -13,16 +14,21 @@ import java.util.*;
 
 public class ContinuousSubarraySum {
 	
+	// We iterate through the input array exactly once, keeping track of the running sum mod k of the elements in the process. If we find that a running sum value at index j has been previously seen before in 
+	// some earlier index i in the array, then we know that the sub-array (i,j] contains a desired sum.
 	public boolean checkSubarraySum(int[] nums, int k) 
 	{
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>(){{put(0,-1);}};;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
         int runningSum = 0;
-        for (int i=0;i<nums.length;i++) 
+        for (int i = 0; i < nums.length; i++) 
         {
             runningSum += nums[i];
             if (k != 0) 
+            	// save remainder as remaining sum (since multiple of k)
                 runningSum %= k; 
             Integer prev = map.get(runningSum);
+            // If we have seen the remainder before, return true as we get the subarray from i to prev
             if (prev != null) 
             {
                 if (i - prev > 1) 
@@ -35,8 +41,9 @@ public class ContinuousSubarraySum {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] nums = {23, 2, 4, 6, 7};
+		ContinuousSubarraySum obj = new ContinuousSubarraySum();
+		System.out.println(obj.checkSubarraySum(nums, 6));
 	}
 
 }

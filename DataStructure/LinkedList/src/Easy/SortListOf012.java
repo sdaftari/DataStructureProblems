@@ -4,7 +4,7 @@ public class SortListOf012 {
 	ListNode head;  // head of list 
 	void sortList() 
     { 
-       // initialise count of 0 1 and 2 as 0 
+       // initialize count of 0 1 and 2 as 0 
        int count[] = {0, 0, 0};  
          
        ListNode ptr = head; 
@@ -34,7 +34,7 @@ public class SortListOf012 {
             else 
             { 
                ptr.val= i; 
-               --count[i]; 
+               count[i]--; 
                ptr = ptr.next; 
             } 
          } 

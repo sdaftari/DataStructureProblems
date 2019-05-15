@@ -49,7 +49,7 @@ public class WallsAndGates {
                 for(int[] dir : directions)
                 {
                     int newX = row + dir[0], newY = col + dir[1];
-                    if(newX < 0 || newX >= rooms.length || newY < 0 || newY >= rooms[0].length)
+                    if(newX < 0 || newX >= rooms.length || newY < 0 || newY >= rooms[0].length || rooms[newX][newY] < 0)
                         continue;
                     if(rooms[newX][newY] == Integer.MAX_VALUE)
                     {

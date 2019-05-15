@@ -8,7 +8,8 @@ import java.util.*;
 public class KCLosestPointsToOrigin {
 	
 	// O(N)
-    public int[][] kClosest(int[][] points, int K) {
+    public int[][] kClosest(int[][] points, int K) 
+    {
         int len =  points.length, l = 0, r = len - 1;
         while (l <= r) 
         {

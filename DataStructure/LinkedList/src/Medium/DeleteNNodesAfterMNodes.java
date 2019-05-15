@@ -13,7 +13,7 @@ public class DeleteNNodesAfterMNodes {
 	    // through the whole list  
 	    while (curr!=null)  
 	    {  
-	        // Skip M nodes  
+	        // Skip M nodes. Since curr is already pointing to head, go from 1 to < M  
 	        for (count = 1; count < M && curr != null; count++)  
 	            curr = curr.next;  
 	  
@@ -21,11 +21,12 @@ public class DeleteNNodesAfterMNodes {
 	        if (curr == null)  
 	            return;  
 	  
-	        // Start from next node and delete N nodes  
+	        // Start from next node and delete N nodes 
+	        // For N, liip goes from 1 to <= N
 	        t = curr.next;  
 	        for (count = 1; count <= N && t != null; count++)  
 	        {  
-	        	ListNode temp = t;  
+	        	//ListNode temp = t;  
 	            t = t.next;  
 	        }  
 	          

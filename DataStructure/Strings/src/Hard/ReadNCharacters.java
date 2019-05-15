@@ -29,7 +29,9 @@ public class ReadNCharacters {
 //        
 //        while (!eof && total < n)
 //        {
+    		  //  After read4(tmp) call, tmp will have the returned characters
 //            int count = read4(tmp);
+    		  // If count < 4, its eof
 //            eof = count < 4;
 //            count = Math.min(count, n - total);
 //        

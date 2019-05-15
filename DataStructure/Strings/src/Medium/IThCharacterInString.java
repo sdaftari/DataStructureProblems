@@ -16,8 +16,7 @@ public class IThCharacterInString {
 	static String ReverseString(String s) 
 	{ 
 	    char[] arr = s.toCharArray(); 
-	    for(int i = 0; 
-	            i < arr.length / 2; i++) 
+	    for(int i = 0; i < arr.length / 2; i++) 
 	    { 
 	        char temp = arr[i];  
 	        arr[i] = arr[arr.length - i -1];  
@@ -26,8 +25,7 @@ public class IThCharacterInString {
 	    return new String(arr); 
 	} 
 	  
-	// Function to store 
-	// binary Representation 
+	// Function to store binary Representation 
 	static void binary_conversion(int m)  
 	{ 
 	    while (m != 0)  
@@ -40,24 +38,21 @@ public class IThCharacterInString {
 	    s = ReverseString(s); 
 	} 
 	  
-	// Function to find  
-	// ith character 
+	// Function to find ith character 
 	static int find_character(int n, int m,  int i)  
 	{      
-	    // Function to change 
-	    // decimal to binary 
+	    // Function to change decimal to binary 
 	    binary_conversion(m); 
 	  
 	    String s1 = ""; 
 	    for (int x = 0; x < n; x++)  
 	    { 
-	        for (int y = 0;  
-	                 y < s.length(); y++)  
+	        for (int y = 0; y < s.length(); y++)  
 	        { 
 	            if (s.charAt(y) == '1')  
-	            s1 += "10"; 
+	            	s1 += "10"; 
 	            else
-	            s1 += "01";      
+	            	s1 += "01";      
 	        } 
 	          
 	        // Assign s1 String  

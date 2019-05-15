@@ -1,7 +1,8 @@
 package Hard;
 public class RatInMaze {
 	final int N = 4;
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		RatInMaze rat = new RatInMaze();
 		int maze[][] = {{1, 0, 0, 0},
 	            {1, 1, 0, 1},
@@ -16,8 +17,7 @@ public class RatInMaze {
 		int sol[][] = {{0, 0, 0, 0},
 	            	   {0, 0, 0, 0},
 	            	   {0, 0, 0, 0},
-	            	   {0, 0, 0, 0}
-	        };
+	            	   {0, 0, 0, 0}};
 		if (solveMazeUtil(maze, 0, 0, sol) == false)
 		{
 			System.out.println("No Solution!");
@@ -54,20 +54,20 @@ public class RatInMaze {
 		return false;
 	}
 	
+	boolean isSafe(int maze[][], int x, int y)
+    {
+        return (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1);
+    }
+	
 	void printSolution(int sol[][])
     {
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < N; j++)
-                System.out.print(" " + sol[i][j] +
-                                 " ");
+                System.out.print(" " + sol[i][j] + " ");
             System.out.println();
         }
     }
  
-    boolean isSafe(int maze[][], int x, int y)
-    {
-        return (x >= 0 && x < N && y >= 0 &&
-                y < N && maze[x][y] == 1);
-    }
+    
 }

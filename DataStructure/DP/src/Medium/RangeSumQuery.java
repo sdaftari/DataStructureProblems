@@ -4,7 +4,7 @@
 //sumRange(0, 2) -> 1
 //sumRange(2, 5) -> -1
 //sumRange(0, 5) -> -3
-// Time: O(N). Space: O(1)
+// Time: O(N). Space: O(1), Query: O(1)
 
 // Range Sum Query II
 //Example:
@@ -19,6 +19,7 @@
 //sumRegion(2, 1, 4, 3) -> 8
 //sumRegion(1, 1, 2, 2) -> 11
 //sumRegion(1, 2, 2, 4) -> 12
+// Time: O(N^2). Space: O(1), Query: O(1)
 
 package Medium;
 

@@ -37,7 +37,7 @@ public class AccountMerge {
         for (String email : name.keySet())
         {
             List<String> list = new LinkedList<>();
-            if (visited.add(email))
+            if (visited.add(email)) 
             {
                 dfs(graph, email, visited, list);
                 Collections.sort(list);

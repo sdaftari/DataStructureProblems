@@ -14,7 +14,8 @@ import java.util.*;
 public class SumOfLeftLeaves {
 	
 	public int sumOfLeftLeaves(TreeNode root) {
-        if(root == null) return 0;
+        if(root == null) 
+        	return 0;
         int ans = 0;
         Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(root);

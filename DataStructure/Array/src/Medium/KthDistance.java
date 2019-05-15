@@ -31,10 +31,9 @@ public class KthDistance {
         HashSet<Integer> set = new HashSet<>(); 
   
         // Traverse the input array 
-        for (int i=0; i<arr.length; i++) 
+        for (int i = 0; i < arr.length; i++) 
         { 
-            // If already present n hash, then we found  
-            // a duplicate within k distance 
+            // If already present n hash, then we found a duplicate within k distance 
             if (set.contains(arr[i])) 
                return true; 
   

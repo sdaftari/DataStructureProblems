@@ -1,0 +1,16 @@
+package Medium;
+
+public class GuessTheWord {
+	
+	public int match(String a, String b) {
+        int matches = 0;
+        for (int i = 0; i < a.length(); ++i) if (a.charAt(i) == b.charAt(i)) matches ++;
+        return matches;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

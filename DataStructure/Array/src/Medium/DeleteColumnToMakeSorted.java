@@ -12,32 +12,31 @@ package Medium;
 public class DeleteColumnToMakeSorted {
 	
 	public int minDeletionSize(String[] A) {
-        int res = 0, n = A.length, m = A[0].length(), i, j;
-        boolean[] sorted = new boolean[n - 1];
-        for (j = 0; j < m; ++j) 
+        int ret = 0;
+        // for each column, check if all strings are sorted
+        for (int i = 0; i < A[0].length(); i++) 
         {
-            // For each string in array
-            for (i = 0; i < n - 1; ++i) 
-            {
-                // check if same character at index j, is in increasing order
-                if (!sorted[i] && A[i].charAt(j) > A[i + 1].charAt(j)) 
-                {
-                    // If not, increment res count to delete the character
-                    res++;
-                    break;
-                }
-            }
-            if (i < n - 1) continue;
-            for (i = 0; i < n - 1; ++i)
-                if (A[i].charAt(j) < A[i + 1].charAt(j))
-                    sorted[i] = true;
+            if (!isSorted(A, i)) 
+            	ret++;
         }
-        return res;
+        return ret;
     }
-
+    
+    private boolean isSorted(String[] A, int col) 
+    {
+        // Over all strings, check if each character is in sorted order
+        for (int i = 0; i < A.length - 1; ++i) 
+        {
+            if (A[i].charAt(col) > A[i + 1].charAt(col)) 
+                return false;
+        }
+        return true;
+    }
+    
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String[] A = {"ca","bb","ac"};
+		DeleteColumnToMakeSorted obj = new  DeleteColumnToMakeSorted();
+		System.out.println(obj.minDeletionSize(A));
 	}
 
 }

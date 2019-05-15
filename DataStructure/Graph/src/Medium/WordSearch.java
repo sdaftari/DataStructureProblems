@@ -18,8 +18,12 @@ package Medium;
 public class WordSearch {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		char[][] board = { {'A','B','C','E'},
+				     	   {'S','F','C','S'},
+				     	   {'A','D','E','E'}};
+		String word = "ABCCE";
+		WordSearch obj = new WordSearch();
+		System.out.println(obj.exist(board, word));
 	}
 	
 	public boolean exist(char[][] board, String word) {
@@ -32,7 +36,7 @@ public class WordSearch {
                     return true;
             }
 	    }
-	    return false;
+	    return false;                                                           
     }
     
     private boolean exists(char[][] board, int x, int y, char[] word, int i)

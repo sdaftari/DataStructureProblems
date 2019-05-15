@@ -12,7 +12,7 @@ public class CoinChangingWaysNumber {
 	public static void main(String[] args) {
 		CoinChangingWaysNumber cc = new CoinChangingWaysNumber();
         int total = 5;
-        int coins[] = {1, 2, 3};
+        int coins[] = {1, 2, 5};
         System.out.println(cc.coinChangingNumber(coins, total));
 	}
 	
@@ -28,14 +28,15 @@ public class CoinChangingWaysNumber {
 		
 		for(int i=1; i <= coins.length; i++){
             for(int j=1; j <= total ; j++){
-            	// if coin value is greater than total, take value from previous coin (upper row)
+            	// if coin value is greater than total, take value from previous coin (upper row), equal to that amount
                 if(coins[i-1] > j)
                 {
                     temp[i][j] = temp[i-1][j];
                 }
                 else
                 {
-                	// if we get a coin value then go back that much value
+                	// if we get a coin value then go back that much value + 
+                	// if we dont consider the coin value, then take value from top as #ways to get that value using prev coins
                 	temp[i][j] = temp[i][j-coins[i-1]] + temp[i-1][j];
                 }
             }

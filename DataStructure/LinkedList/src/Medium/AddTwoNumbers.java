@@ -27,8 +27,8 @@ public class AddTwoNumbers {
             while(l1 != null && l2 != null)
             {
                 int data = l1.val + l2.val + carry;
-                int value = data%10;
-                carry = data/10;
+                int value = data % 10;
+                carry = data / 10;
                 if (sol == null)
                 {                    
                     sol = new ListNode(value);

@@ -17,19 +17,17 @@ public class PalindromePairs {
         }
     }
 	
-	public List<List<Integer>> palindromePairs(String[] words) {
+	public List<List<Integer>> palindromePairs(String[] words) 
+	{
         List<List<Integer>> res = new ArrayList<>();
-
         TrieNode root = new TrieNode();
 
-        for (int i = 0; i < words.length; i++) {
+        for (int i = 0; i < words.length; i++) 
             addWord(root, words[i], i);
-        }
-
-        for (int i = 0; i < words.length; i++) {
+        
+        for (int i = 0; i < words.length; i++) 
             search(words, i, root, res);
-        }
-
+        
         return res;
     }
     
@@ -56,6 +54,8 @@ public class PalindromePairs {
     {
         for (int j = 0; j < words[i].length(); j++) 
         {	
+        	// since the two words should be different, we will use index to differentiate between them
+        	// once the word is completed, the index of word is assigned to that node
             if (root.index >= 0 && root.index != i && isPalindrome(words[i], j, words[i].length() - 1)) 
                 res.add(Arrays.asList(i, root.index));
 

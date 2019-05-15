@@ -36,8 +36,9 @@ public class CustomSortString {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String S = "cba", T = "abcd";
+		CustomSortString obj = new CustomSortString();
+		System.out.println(obj.customSortString(S, T));
 	}
 
 }

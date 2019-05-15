@@ -1,3 +1,6 @@
+//Check whether the original sequence org can be uniquely reconstructed from the sequences in seqs. The org sequence is a permutation of the integers from 1 to n, with 1 <= n <= 104. 
+//Reconstruction means building a shortest common supersequence of the sequences in seqs (i.e., a shortest sequence so that all sequences in seqs are subsequences of it). 
+//Determine whether there is only one sequence that can be reconstructed from seqs and it is the org sequence.
 //Example:
 //Input:
 //org: [1,2,3], seqs: [[1,2]]
@@ -23,14 +26,28 @@ import java.util.*;
 
 public class SequenceReconstruction {
 
-	public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) {
+	// We need to check for two conditions
+	// 1. All consecutive pairs should be visited so that we will have relation among all the num,bers
+	// 2. If numbers are not consecutive, prev should be less than curr
+	public boolean sequenceReconstruction(int[] org, List<List<Integer>> seqs) 
+	{
+		// We need to keep index for elements in org. 
+		// Since 0 is not included in sequence, its length should be +1 
 		int idx[] = new int[org.length + 1];
-        int pairs = org.length - 1;
-        for (int i = 0; i < org.length; i++)
+		
+		for (int i = 0; i < org.length; i++)
             idx[org[i]] = i;
+		
+		// pairs stores only consecutive sequences. So its length is org.length - 1
+        // In order to find the relation, we will have to visit all the consecutive pairs
+        int pairs = org.length - 1;
         
+        // To avoid duplicates
         boolean seen[] = new boolean[org.length + 1];
+        
+        // To check if sequence size is zero
         boolean isEmpty = true;
+                
         for (List<Integer> seq : seqs)
         {
             for (int i = 0; i < seq.size(); i++)

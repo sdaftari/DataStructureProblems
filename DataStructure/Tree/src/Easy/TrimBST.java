@@ -26,6 +26,7 @@ public class TrimBST {
         if (root == null) 
             return null;
         
+        // If the value doesn ot lie between the range
         if (root.val < L) 
             return trimBST(root.right, L, R);
         if (root.val > R) 
@@ -38,8 +39,16 @@ public class TrimBST {
     }
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		TreeNode root = new TreeNode(3);
+		root.left = new TreeNode(0);
+		root.right = new TreeNode(4);
+		
+		root.left.right = new TreeNode(2);
+		
+		root.left.right.left = new TreeNode(1);
+		
+		TrimBST obj = new TrimBST();
+		System.out.println(obj.trimBST(root, 1, 3).val);
 	}
 
 }

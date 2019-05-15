@@ -25,7 +25,8 @@ public class FindDuplicate {
         {
             slow = nums[slow-1];
             fast = nums[nums[fast-1]-1];
-        } while (slow != fast);
+        } 
+        while (slow != fast);
         
         slow = n;
         while(slow != fast)
@@ -38,7 +39,8 @@ public class FindDuplicate {
     }
 	
 	// Find all duplicates
-	public List<Integer> findDuplicates(int[] nums) {
+	public List<Integer> findDuplicates(int[] nums) 
+	{
         List<Integer> result = new ArrayList<>();   
         for (int i = 0; i < nums.length; i++)
         {

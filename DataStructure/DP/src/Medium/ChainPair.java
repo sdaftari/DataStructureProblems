@@ -41,6 +41,7 @@ public class ChainPair {
        /* Compute optimized chain length values in bottom up manner */
        for ( i = 1; i < n; i++ ) 
           for ( j = 0; j < i; j++ ) 
+        	 // Since we comparing length, and it should be at least 1 more than previous
              if ( arr[i].a > arr[j].b && mcl[i] < mcl[j] + 1) 
                 mcl[i] = mcl[j] + 1; 
        

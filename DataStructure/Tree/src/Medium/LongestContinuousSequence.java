@@ -28,8 +28,9 @@
 //
 //   /      \       /
 //
-//40      60 90
+//40         60   90
 //For the above test case no sequence is possible: -1
+// Time: O(N)
 
 package Medium;
 
@@ -38,41 +39,33 @@ public class LongestContinuousSequence
 	int max;
 	public int longestConsecutive(TreeNode root)
     {
-        helper(root);
-        // If no sequence is posiible, return -1
-        return max == 1 ? -1 : max;
+		if (root == null) 
+            return 0;
+		
+        int left = longestConsecutive(root.left);
+        int right = longestConsecutive(root.right);
+        int len = getLength(root);
+        return Math.max(len, Math.max(left, right));
     }
     
-    private int helper(TreeNode t){
-        if(t==null){
+	private int getLength(TreeNode root) 
+    {
+        if (root == null) 
             return 0;
+        
+        int left = 1;
+        int right = 1;
+        if (root.left != null) 
+        {
+            if (root.val + 1 == root.left.val) 
+                left += getLength(root.left);
         }
- 
-        int leftMax = helper(t.left);
-        int rightMax = helper(t.right);
- 
-        int leftTotal = 0;
-        if(t.left == null)
-            leftTotal = 1;
-        else if(t.val+1 == t.left.val)
-            leftTotal = leftMax+1;    
-        else
-            leftTotal = 1;
- 
-        int rightTotal = 0;
-        if(t.right == null)
-            rightTotal = 1;
-        else if(t.val+1 == t.right.val)
-            rightTotal = rightMax+1;    
-        else
-            rightTotal = 1;
- 
-        max = Math.max(max, leftTotal);
-        max = Math.max(max, rightTotal);
- 
-        int longer = Math.max(leftTotal, rightTotal);   
- 
-        return longer;
+        if (root.right != null) 
+        {
+            if (root.val + 1 == root.right.val) 
+                right += getLength(root.right);
+        }
+        return Math.max(left, right);
     }  
 
 	public static void main(String[] args) {

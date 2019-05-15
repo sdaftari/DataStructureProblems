@@ -25,7 +25,7 @@ public class PartitionToKEqualSumSubsets {
             return true;
         if(cur_sum == target && cur_num > 0)
             return canPartition(nums, visited, 0, k-1, 0, 0, target);
-        for(int i = start_index; i<nums.length; i++)
+        for(int i = start_index; i < nums.length; i++)
         {
             if(visited[i] == 0)
             {

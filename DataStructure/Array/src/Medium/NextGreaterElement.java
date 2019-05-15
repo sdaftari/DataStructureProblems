@@ -18,8 +18,7 @@ public class NextGreaterElement {
         char[] s = (""+n).toCharArray();
         int i = s.length - 2;
         // I) Start from the right most digit and 
-        // find the first digit that is
-        // smaller than the digit next to it.
+        // find the first digit that is smaller than the digit next to it.
         while (i >= 0 && s[i+1] <= s[i])
             i--;
         

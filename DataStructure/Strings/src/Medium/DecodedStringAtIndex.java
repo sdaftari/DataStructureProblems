@@ -14,7 +14,7 @@ public class DecodedStringAtIndex {
         int i;
         char[] chs = S.toCharArray();
         for (i = 0; N < K; i++)
-        	// If the current character is digit, multiply N with that digit
+        	// If the current character is digit, multiply N with that digit. So N will be total length of string or equal to k
             N = Character.isDigit(chs[i]) ? N * (chs[i] - '0') : N+1;
             
         // Once we get all characters greater than or equal to k

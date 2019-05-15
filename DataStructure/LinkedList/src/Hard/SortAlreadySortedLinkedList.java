@@ -30,9 +30,10 @@ public class SortAlreadySortedLinkedList {
            heads of linked lists */
         Node Ahead = new Node(0), Dhead = new Node(0); 
   
-        // Split the list into lists 
+        // Split the list into lists of ascending order and descending order respectively
         splitList(Ahead, Dhead); 
   
+        // Move from dummy node to first nodes
         Ahead = Ahead.next; 
         Dhead = Dhead.next; 
   
@@ -56,8 +57,8 @@ public class SortAlreadySortedLinkedList {
             prev = current; 
             current = next; 
         } 
-        Dhead = prev; 
-        return Dhead; 
+        
+        return prev; 
     } 
   
     /* Function to print linked list */

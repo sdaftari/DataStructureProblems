@@ -1,0 +1,16 @@
+package Medium;
+
+public class ConvertToBase2 {
+
+	public String baseNeg2(int N) {
+        int num = 1;
+        while (num < N) num = (num << 2) + 1;
+        return Integer.toBinaryString(num ^ (num - N));
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

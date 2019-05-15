@@ -13,7 +13,7 @@
 package Easy;
 import java.util.*;
 
-public class NUmberOfSpecialEquivalent {	
+public class NumberOfSpecialEquivalent {	
 	public int numSpecialEquivGroups(String[] A) 
 	{
         Set<String> set= new HashSet<>();

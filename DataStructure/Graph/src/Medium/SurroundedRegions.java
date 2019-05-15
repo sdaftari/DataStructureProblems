@@ -24,6 +24,7 @@ public class SurroundedRegions {
         
         //Any 'O' connected to a boundary directly or indirectly, can't be turned to 'X', so ...
         //Start from first and last column, turn 'O' to '*'.
+        // Once the non-turnable 'O' are converted to *, we can replace remaining 'O' to X
         for (int i = 0; i < m; i++)
         {
             if (board[i][0] == 'O')
